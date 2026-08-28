@@ -11,14 +11,18 @@ auto_run_building_list —— 纯 Python（无浏览器）版全自动判定
 主流程（与需求一致）：
     1. 输入源 = 全網XGSPON升级进度_A1.xlsx 的「8级地址」列
        每行一个地址 → 作为关键词调 searchAddress → 取返回值的第一个地址；
-       若输入楼宇名与系统返回地址不能完全匹配 → remark 写「eshop未查到该地址」（同 main.py）。
+       若输入楼宇名与系统返回地址不能完全匹配 → remark 写「eshop地址不匹配」。
     2. 调 getAddressDetail → 返回 busiResp 保存为 busiRespObj
        → 取出该楼宇所有 floor / flat。
     3. 采样：楼层先按数字（int）排序、同层 Flat 字典序兜底，再每 5 层随机选 1 层
        curFloor，当层随机选 1 个 curFlat。
-    4. 对每组的 (floor, flat) 调 getInstallInfo → 取 isXGSPONsupport 映射到
-       Is2500Support / defeatBuilding / remark（全自动判定）。
-    5. 落库 Excel（行键幂等 + 楼宇级/行级断点续跑，复用 storage 模块）。
+    4. 对每组的 (floor, flat) 调 getInstallInfo 自动判定：
+         isXGSPON='Y' → Is2500Support=Y,  remark=可下2500M
+         isXGSPON='N' → Is2500Support=N,  defeatBuilding=Y, remark=不可下2500M
+         其他兜底       → Is2500Support=E,  remark=待排查
+    5. 落库 Excel：输出表头 = A1 原表头 + 追加字段（curBuilding/curFloor/curFlat/
+       Is2500Support/defeatBuilding/remark/buildingCode/ofcaCode/carrier …），
+       行键幂等 + 楼宇级/行级断点续跑（复用 storage 模块）。
 
 用法：
     python auto_run_building_list.py
@@ -31,10 +35,11 @@ from __future__ import annotations
 
 import argparse
 import logging
+import os
 import sys
 import time
 from datetime import datetime
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 import config
 import openpyxl
@@ -43,8 +48,6 @@ from storage import ExcelStorage, ProgressTracker
 
 # 复用 main.py 里已验证的纯函数（不依赖浏览器）
 from main import (
-    apply_auto_result,
-    build_error_record,
     build_install_bus_info,
     extract_building_name,
     is_address_matched,
@@ -61,19 +64,39 @@ DEFAULT_INPUT = r"C:\Users\zengh\Downloads\全網XGSPON升级进度_A1.xlsx"
 DEFAULT_COLUMN = "8级地址"
 DEFAULT_OUTPUT = config.EXCEL_PATH.replace("result.xlsx", "auto_run_building_list_result.xlsx")
 
+# 追加到 A1 原表头之后的字段（输出格式由需求规定）
+APPENDED_HEADERS = [
+    "inputBuilding",   # 8级地址的值，用作行键（ExcelStorage 固定按此列定位）
+    "curBuilding",     # 页面选中的地址文本
+    "curFloor",        # 采样楼层
+    "curFlat",         # 采样单位
+    "Is2500Support",   # Y / N / E
+    "defeatBuilding",  # 不可卖时为 Y
+    "remark",          # 判定说明 / 错误信息
+    "buildingCode",    # 楼宇编码
+    "ofcaCode",        # OFCA 编码
+    "carrier",         # 覆盖运营商（getInstallInfo 返回）
+    "isXGSPONsupport", # 接口侧 XGS-PON(2500M) 支持标识
+    "coverType",       # 覆盖类型（如 GP）
+    "floorGroup",      # 采样分组（每 5 层一组）
+    "level11_address", # 11级地址 = curBuilding,curFloor层curFlat户
+    "checkedAt",       # 本行采集时间
+]
+
 
 # ----------------------------------------------------------------------
-# 输入读取：从 A1 Excel 提取「8级地址」列（去重，保留顺序）
+# 输入读取：从 A1 Excel 提取「8级地址」列整行（去重，保留顺序）
 # ----------------------------------------------------------------------
-def read_address_column(
+def read_address_rows(
     path: str,
     column: str = DEFAULT_COLUMN,
     sheet: Optional[str] = None,
-) -> List[str]:
+) -> Tuple[List[str], List[Tuple[str, Dict[str, Any]]]]:
     """
-    读取 Excel 指定工作表的「8级地址」列，返回去重后的关键词列表（保留首次出现顺序）。
+    读取 Excel 指定工作表的「8级地址」列，返回 (A1表头列表, [(关键词, 整行dict), ...])。
 
-    :return: 楼宇地址关键词列表（每行一个，作为 searchAddress 入参）
+    整行 dict 保留 A1 的全部原始列（區域/優先級/Site/.../下挂楼宇/8级地址），
+    以便输出时原样携带。关键词去重、保留首次出现顺序。
     """
     wb = openpyxl.load_workbook(path, read_only=True, data_only=True)
     ws = wb[sheet] if sheet else wb.active
@@ -85,7 +108,7 @@ def read_address_column(
     col = headers.index(column) + 1
 
     seen = set()
-    keywords: List[str] = []
+    rows: List[Tuple[str, Dict[str, Any]]] = []
     dup = 0
     for r in range(2, ws.max_row + 1):
         v = ws.cell(r, col).value
@@ -98,10 +121,42 @@ def read_address_column(
             dup += 1
             continue
         seen.add(kw)
-        keywords.append(kw)
+        row = {
+            headers[c]: (ws.cell(r, c + 1).value or "")
+            for c in range(len(headers))
+        }
+        rows.append((kw, row))
     wb.close()
-    logger.info("输入提取：唯一地址 %d 个，去重 %d 条重复行", len(keywords), dup)
-    return keywords
+    logger.info("输入提取：唯一地址 %d 个，去重 %d 条重复行", len(rows), dup)
+    return headers, rows
+
+
+def _read_header_row(path: str) -> List[str]:
+    """读取已有结果文件的首行表头（用于 schema 一致性校验）。"""
+    wb = openpyxl.load_workbook(path, read_only=True)
+    ws = wb.active
+    headers = [c.value for c in ws[1]]
+    wb.close()
+    return headers
+
+
+def base_record(keyword: str, input_row: Dict[str, Any]) -> Dict[str, Any]:
+    """以 A1 整行为底，附上行键列 inputBuilding（=8级地址值）。"""
+    rec = {h: (input_row.get(h, "") or "") for h in input_row}
+    rec["inputBuilding"] = keyword
+    return rec
+
+
+def apply_auto_result_script(record: Dict[str, Any]) -> Dict[str, Any]:
+    """按接口 isXGSPONsupport 自动填充判定列（脚本版固定文案）。"""
+    flag = str(record.get("isXGSPONsupport", "") or "").strip()
+    if flag == "Y":
+        record.update({"Is2500Support": "Y", "remark": "可下2500M"})
+    elif flag == "N":
+        record.update({"Is2500Support": "N", "defeatBuilding": "Y", "remark": "不可下2500M"})
+    else:
+        record.update({"Is2500Support": "E", "remark": "待排查"})
+    return record
 
 
 # ----------------------------------------------------------------------
@@ -111,11 +166,14 @@ def process_building(
     client: CmhkApiClient,
     storage: ExcelStorage,
     keyword: str,
+    input_row: Dict[str, Any],
 ) -> bool:
     """
     处理一栋楼宇：searchAddress → getAddressDetail → 采样 → getInstallInfo → 落库。
     :return: True=全部样本成功；False=存在失败（下次运行会重试该楼宇）
     """
+    base = base_record(keyword, input_row)
+
     # ---- 1. searchAddress：取返回列表第一项 ----
     try:
         data = client.search_address(keyword)
@@ -123,16 +181,12 @@ def process_building(
     except ApiError as exc:
         msg = f"searchAddress: {exc}"
         logger.warning(msg)
-        storage.upsert_row(build_error_record(keyword, msg))
+        storage.upsert_row({**base, "remark": f"错误:{msg[:120]}"})
         return False
     if not items:
-        # 系统无该地址候选：按「eshop未查到该地址」降级
-        print(f"    [降级] eshop未查到该地址（keyword={keyword}）")
-        storage.upsert_row({
-            "inputBuilding": keyword,
-            "curBuilding": "",
-            "remark": "eshop未查到该地址",
-        })
+        # 系统无该地址候选：按「eshop地址不匹配」降级
+        print(f"    [降级] eshop地址不匹配（keyword={keyword}）")
+        storage.upsert_row({**base, "curBuilding": "", "remark": "eshop地址不匹配"})
         return True
 
     address_obj = items[0]
@@ -142,14 +196,9 @@ def process_building(
     # ---- 1.5 地址匹配校验：系统返回地址须包含输入楼宇名 ----
     if not is_address_matched(keyword, cur_building):
         name = extract_building_name(keyword)
-        remark = "eshop未查到该地址"
-        print(f"    [降级] {remark}（输入[{name}]，系统最近似返回[{cur_building}]）")
-        logger.warning("地址未匹配(eshop未查到该地址): %s -> %s", keyword, cur_building)
-        storage.upsert_row({
-            "inputBuilding": keyword,
-            "curBuilding": cur_building,
-            "remark": remark,
-        })
+        print(f"    [降级] eshop地址不匹配（输入[{name}]，系统最近似返回[{cur_building}]）")
+        logger.warning("地址未匹配(eshop地址不匹配): %s -> %s", keyword, cur_building)
+        storage.upsert_row({**base, "curBuilding": cur_building, "remark": "eshop地址不匹配"})
         return True
 
     client.throttle()
@@ -160,7 +209,7 @@ def process_building(
     except ApiError as exc:
         msg = f"getAddressDetail: {exc}"
         print(f"    [接口异常] {msg}")
-        storage.upsert_row(build_error_record(keyword, msg))
+        storage.upsert_row({**base, "curBuilding": cur_building, "remark": f"错误:{msg[:120]}"})
         return False
     busi_resp_obj = detail_data.get("busiResp") or {}
 
@@ -168,11 +217,7 @@ def process_building(
     samples = pick_sampled_units(busi_resp_obj, seed=keyword)
     if not samples:
         print("    [提示] 该楼宇无楼层/单位数据")
-        storage.upsert_row({
-            "inputBuilding": keyword,
-            "curBuilding": cur_building,
-            "remark": "楼宇无楼层单位数据",
-        })
+        storage.upsert_row({**base, "curBuilding": cur_building, "remark": "楼宇无楼层单位数据"})
         return True
 
     print(f"    共采样 {len(samples)} 组: "
@@ -188,14 +233,13 @@ def process_building(
             continue
 
         record: Dict[str, Any] = {
-            "inputBuilding": keyword,
+            **base,
             "curBuilding": cur_building,
             "curFloor": floor,
             "curFlat": flat,
             "buildingCode": building_code,
             "ofcaCode": address_obj.get("ofcaCode", ""),
             "floorGroup": group_label,
-            "checkedAt": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         }
 
         bus_info = build_install_bus_info(address_obj, building_code, floor, flat)
@@ -211,7 +255,7 @@ def process_building(
             continue
 
         record.update(summarize_install(install_data))
-        record = apply_auto_result(record)
+        record = apply_auto_result_script(record)
         print(f"    [{idx}/{len(samples)}] {floor}层{flat}室(组{group_label}) "
               f"isXGSPONsupport={record['isXGSPONsupport'] or '-'} "
               f"-> {record['remark']}")
@@ -226,18 +270,33 @@ def process_building(
 # ----------------------------------------------------------------------
 def run(args: argparse.Namespace) -> int:
     try:
-        lines = read_address_column(args.input, column=args.column, sheet=args.sheet)
+        a1_headers, rows = read_address_rows(args.input, column=args.column, sheet=args.sheet)
     except Exception as exc:
         print(f"[错误] 读取输入失败：{exc}")
         return 1
-    if not lines:
+    if not rows:
         print(f"[错误] 输入文件「{args.input}」的「{args.column}」列无有效数据")
         return 1
     if args.limit:
-        lines = lines[: args.limit]
-    total = len(lines)
+        rows = rows[: args.limit]
+    total = len(rows)
 
-    storage = ExcelStorage(path=args.output)
+    # 输出表头 = A1 原表头 + 追加字段
+    output_headers = a1_headers + APPENDED_HEADERS
+
+    # schema 一致性：若已有结果文件表头与本次不一致，--redo 重建，否则报错退出
+    if os.path.exists(args.output):
+        existing = _read_header_row(args.output)
+        if existing != output_headers:
+            if args.redo:
+                os.remove(args.output)
+                print("[--redo] 检测到表头变化，已重建结果文件")
+            else:
+                print("[错误] 结果文件表头与本次输入不一致；"
+                      "请换 --output 路径或加 --redo 重建")
+                return 1
+
+    storage = ExcelStorage(path=args.output, headers=output_headers)
     progress = ProgressTracker(ignore_existing=args.redo)
 
     client = CmhkApiClient(
@@ -254,20 +313,21 @@ def run(args: argparse.Namespace) -> int:
     )
 
     failed: List[str] = []
-    for row_no, keyword in enumerate(lines, start=1):
+    for row_no, (keyword, input_row) in enumerate(rows, start=1):
         if not args.redo and progress.is_done(keyword):
             print(f"[跳过] ({row_no}/{total}) {keyword} 已完成")
             continue
 
         print(f"\n[{row_no}/{total}] {keyword}")
         try:
-            ok = process_building(client, storage, keyword)
+            ok = process_building(client, storage, keyword, input_row)
         except KeyboardInterrupt:
             print("\n[中断] 用户终止，已落库数据保留")
             raise
         except Exception as exc:
             logger.exception("处理楼宇异常: %s", keyword)
-            storage.upsert_row(build_error_record(keyword, f"未预期异常:{exc}"))
+            storage.upsert_row({**base_record(keyword, input_row),
+                                "remark": f"错误:未预期异常:{str(exc)[:100]}"})
             ok = False
 
         if ok:
