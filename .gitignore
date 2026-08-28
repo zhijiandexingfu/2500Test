@@ -1,0 +1,30 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# ===== 浏览器自动化 profile（含本地登录态、缓存，勿提交）=====
+.browser_profile/
+.browser_profile_v3/
+.browser_profile_xgps/
+
+# ===== 测试产物 / 运行输出（大文件、含本地数据）=====
+output/
+
+# ===== 项目内部数据（进度、记忆，非源码）=====
+.workbuddy/
+
+# ===== IDE =====
+.idea/
+.vscode/
+
+# ===== 系统 / 临时 =====
+.DS_Store
+Thumbs.db
+*.log
+
+# ===== 运行输入 / 缓存（非源码，含真实楼宇地址数据）=====
+input_buildings.txt
+data/

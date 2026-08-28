@@ -1,0 +1,943 @@
+@scene:15我正在做我们公司系统的业务测试，手工需要随机去找bad case，工作量较大。请你输入文件中按行提取每一行的楼宇名称记为 inputBuilding，请你对这个楼宇名称调用该接口返回第一个楼宇地址记为curBuilding“curl 'https://www.hk.chinamobile.com/api/ecosp-emall/itemRest/homeBroadBand/searchAddress?XGiOG2f705=bfn81928182GeZ2PXdD3082ec28Uk1GkK_w8hl49IY3Px8nptA8.GrwZ6_4xjLbmZ5GZrF.kVdjCfkLpANoiaynAIfE_fw9WeQ65PEQ8SwdR8OcRRl57ZWKCWDf63P0AYQi_7MqmKrhqWb_ET3GWUxMJII8I1fsgXiqVAI3lp0rDEy.ABB0u_SVm8G2QLi5OfOgh_cB9C0ejigVO0Ot36n3pXux9jCpAkG4SrGcPWPlc3Wk7As76HqbVk9yCJEglDEO_QGsKkKms1B4I37CZdO0igcVVghz7Bi..BKHPH4wczXpPXGOZVvXPh8yBhFNOETO450' \
+  -H 'acc-lang: zh-HK' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: zh-HK' \
+  -H 'api-version: 2' \
+  -H 'channelid: WWW' \
+  -H 'cmhkchannel: WWW' \
+  -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -b 'JSESSIONID=GA1.1.56908290.1768204479; _ga=GA1.1.56908290.1768204479; __qca=P1-37bb6929-0d7f-42d1-8dc3-aa3c40177a17; _ga_3L8BEE33WB=GS2.1.s1773396484$o2$g0$t1773396484$j60$l0$h0; _gcl_au=1.1.346306711.1782746843; _fbp=fb.1.1782746843462.650640671629310150; lang=zh-HK; _clck=1fjef3a%5E2%5Eg8a%5E0%5E2371; _gcl_gs=2.1.k1$i1786006532$u31404454; JSESSIONID_USER=l868CD0B10423E37A138282160500395B-1; _gcl_aw=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; _gcl_dc=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; tfpsi=1304e250-4285-4b15-95e2-476640180889; _ga_W9GR00K3WL=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; _ga_8W8T13PN7Z=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; 1P_JAR636e=bl1536958837J4mBsZRF1899e8c7EmpcBXIu3L7v.Fr5OnLirFOcsp36n8y1b9NGUECtQX.Zn2ChemES1aqopcT3tf4rUmUVmFrx6l0gwJgXnKJ0Lf3lUpBYODYbQUVYxTyVavTUihSivqio1z2HZkwPnGaK82.TGSkE8WWoG9f05jsfY4TwPqc7QFjAkJgE.soUxgj8XynPZ9VKmxlgnIRngPs2kDDJiCGtB0z4T8DNsvjvEAfbSTPacTQQ34FIFQfCz2McP10whicdBagBiVgmPJjeU3WpakRz24T02GlhP5jJCQQDIiPYlDHBK1Xi0Na.l4U; zA7uZWGUB1=8yL7vO9Gxb5Aud0423mhL/BA3RTC8+0O8bQr0w==' \
+  -H 'omni-client-device-id: OCD0202603132032360919656300544' \
+  -H 'omni-tracking-info: %7B%22clickTime%22%3A%222026-08-06%2019%3A02%3A16%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F150.0.0.0%20Safari%2F537.36%22%2C%22version%22%3A%222.2.0%22%2C%22platform%22%3A%22windows%22%2C%22network%22%3A%224g%22%2C%22regionCode%22%3A%22%22%2C%22osVersion%22%3A%22Windows%20NT%2010.0%22%2C%22phone%22%3A%22%22%2C%22userType%22%3A%22%22%2C%22serviceType%22%3A%22%22%7D' \
+  -H 'origin: https://www.hk.chinamobile.com' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://www.hk.chinamobile.com/tc/home-family/broadband' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
+  --data-raw 'busInfo=%7B%22keyword%22%3A%22%E7%AC%AC9%E5%BA%A7%2C%E7%BF%A0%E6%93%81%E8%8F%AF%E5%BA%AD%2C%E6%B2%99%E5%AE%89%E8%A1%97%2C%E9%A6%AC%E9%9E%8D%E5%B1%B1%2C%E6%96%B0%E7%95%8C%22%7D' ;
+curl 'https://www.hk.chinamobile.com/api/ecosp-emall/itemRest/homeBroadBand/searchAddress?XGiOG2f705=bak4122820858PdQKfHke7c19a54fNjnYZ3M9fCv4006NXs.k.bD1eU9TBdMX9WLzozB7Az4UZRLcn0CPhX1V1n2pJASbQnXkUF5B2HH0RATJY0G5ATI1ZecGlvPxOP9SB9o9To2K0IGuiaA7EOwpc147vVabDs2yqcabAy6Mg8zqPe6nvVZ9IOQvODjDq2f28LonMw23KAGrPE70MtnE_l0gYJ8t8t0cfUAkIMUv8pElpPMmUxoYOis96i.NsMQOcMQ_0Y7ZyroEwmCYkz8RubcGVRIwb7o6hPdRglZXqovv8b1gT164XYeAh1ymk6ZfErp8HMM' \
+  -H 'acc-lang: zh-HK' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: zh-HK' \
+  -H 'api-version: 2' \
+  -H 'channelid: WWW' \
+  -H 'cmhkchannel: WWW' \
+  -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -b 'JSESSIONID=GA1.1.56908290.1768204479; _ga=GA1.1.56908290.1768204479; __qca=P1-37bb6929-0d7f-42d1-8dc3-aa3c40177a17; _ga_3L8BEE33WB=GS2.1.s1773396484$o2$g0$t1773396484$j60$l0$h0; _gcl_au=1.1.346306711.1782746843; _fbp=fb.1.1782746843462.650640671629310150; lang=zh-HK; _clck=1fjef3a%5E2%5Eg8a%5E0%5E2371; _gcl_gs=2.1.k1$i1786006532$u31404454; JSESSIONID_USER=l868CD0B10423E37A138282160500395B-1; _gcl_aw=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; _gcl_dc=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; tfpsi=1304e250-4285-4b15-95e2-476640180889; _ga_W9GR00K3WL=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; _ga_8W8T13PN7Z=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; zA7uZWGUB1=3NjZ4a80Qn4FwQe3YFQIEqm6MmBOnC7rLE14zw==; 1P_JAR636e=eo2776438131pwcX4y2j02c0b9bcYeD_BCoy.BVX1K_c2zzRveZoUCH9lBa40zXZSSAe9MaCX2Nvq.ImaGHEpJI72S_DE_PKzfC5QKAy5rBk1ZIgpOHKdz7vv6qMNFH9hLkKBUnu8CkFJHDaENBmIQ_ziuThE777gHJJCHgYVJGg9gyJvYXuEVfN_Z6HdEG0HxSqLhbc3Z3wrq9nISU0UrOPzHSdyUu4qZeLdGCULPUGOsStPZghA.WDHGTemS1l2XSlOI6u.fOJ0zBhH33oiZWsTujQ0eEe5ARKiF7gxHQc8NT01qqVDn1V3qOXSMeX2qNdA9k' \
+  -H 'omni-client-device-id: OCD0202603132032360919656300544' \
+  -H 'omni-tracking-info: %7B%22clickTime%22%3A%222026-08-06%2019%3A02%3A18%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F150.0.0.0%20Safari%2F537.36%22%2C%22version%22%3A%222.2.0%22%2C%22platform%22%3A%22windows%22%2C%22network%22%3A%224g%22%2C%22regionCode%22%3A%22%22%2C%22osVersion%22%3A%22Windows%20NT%2010.0%22%2C%22phone%22%3A%22%22%2C%22userType%22%3A%22%22%2C%22serviceType%22%3A%22%22%7D' \
+  -H 'origin: https://www.hk.chinamobile.com' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://www.hk.chinamobile.com/tc/home-family/broadband' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
+  --data-raw 'busInfo=%7B%22keyword%22%3A%22%E7%AC%AC9%E5%BA%A7%2C%E7%BF%A0%E6%93%81%E8%8F%AF%E5%BA%AD%2C%E6%B2%99%E5%AE%89%E8%A1%97%2C%E9%A6%AC%E9%9E%8D%E5%B1%B1%2C%E6%96%B0%E7%95%8C%22%7D' ;
+curl 'https://www.hk.chinamobile.com/_nuxt/img/mall4.510272f.png' \
+  -H 'accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -b '_ga=GA1.1.56908290.1768204479; __qca=P1-37bb6929-0d7f-42d1-8dc3-aa3c40177a17; _ga_3L8BEE33WB=GS2.1.s1773396484$o2$g0$t1773396484$j60$l0$h0; _gcl_au=1.1.346306711.1782746843; _fbp=fb.1.1782746843462.650640671629310150; lang=zh-HK; _clck=1fjef3a%5E2%5Eg8a%5E0%5E2371; _gcl_gs=2.1.k1$i1786006532$u31404454; JSESSIONID_USER=l868CD0B10423E37A138282160500395B-1; _gcl_aw=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; _gcl_dc=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; tfpsi=1304e250-4285-4b15-95e2-476640180889; _ga_W9GR00K3WL=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; _ga_8W8T13PN7Z=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; 1P_JAR636e=eo2776438131pwcX4y2j02c0b9bcYeD_BCoy.BVX1K_c2zzRveZoUCH9lBa40zXZSSAe9MaCX2Nvq.ImaGHEpJI72S_DE_PKzfC5QKAy5rBk1ZIgpOHKdz7vv6qMNFH9hLkKBUnu8CkFJHDaENBmIQ_ziuThE777gHJJCHgYVJGg9gyJvYXuEVfN_Z6HdEG0HxSqLhbc3Z3wrq9nISU0UrOPzHSdyUu4qZeLdGCULPUGOsStPZghA.WDHGTemS1l2XSlOI6u.fOJ0zBhH33oiZWsTujQ0eEe5ARKiF7gxHQc8NT01qqVDn1V3qOXSMeX2qNdA9k; zA7uZWGUB1=w3OCMdIGl24B7CM29/5E6Ipyi+VK5JXArFF61A==' \
+  -H 'priority: i' \
+  -H 'referer: https://www.hk.chinamobile.com/tc/home-family/broadband' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: image' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCMGrq8Xsi5YDFU2AKQMdMhYhwg%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_0%3Brcb%3D4%3Bord%3D8329833157228%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7445042%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786013977_31xs-66eBXpC8yiUyRhBbUjicSYnxPt6hA%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24490' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t.teads.tv/track?action=timeSpent&env=js-gtm&tag_version=8.14.1_bd426f7&provider=tag&buyer_pixel_id=7217&referer=https%3A%2F%2Fwww.hk.chinamobile.com%2Ftc%2Fhome-family%2Fbroadband&user_session_id=1304e250-4285-4b15-95e2-476640180889&hasConsent=true&cht=timeout' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b 'tt_viewer=bed27405-039d-404a-9d73-3037b88e5a92' \
+  -H 'origin: https://www.hk.chinamobile.com' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://www.hk.chinamobile.com/tc/home-family/broadband' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://pixel.quantserve.com/pixel;r=683356965;labels=_qc.session_engagement;event=refresh;rf=0;a=p-ebLvJckerzLRr;url=https%3A%2F%2Fwww.hk.chinamobile.com%2Ftc%2Fhome-family%2Fbroadband;ref=https%3A%2F%2Fwww.hk.chinamobile.com%2Ftc;ns=0;ce=1;qjs=1;qv=b414f28e-20260609162752;dst=0;et=1786014401313;tzo=-480;ogl=;d=chinamobile.com;uht=2;fpan=0;fpa=P1-37bb6929-0d7f-42d1-8dc3-aa3c40177a17;pbc=;_ses=9b8eb305-76b3-4ba3-98dd-ca5ac91b7670;_seg=1;_gacid=56908290.1768204479;_gasid=W9GR00K3WL_1786006534,8W8T13PN7Z_1786006534;_gam=a;gdpr=0;mdl=' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b 'mc=6940bea8-5b0f3-27a8d-5bbe7; sp=CgkI6KsGEgMQ4RIKCQi9uwYSAxD5EQoICIkNEgMQ4RIKCQi_gQMSAxDhEgoICJ4NEgMQ-REKCQi5igMSAxDhEgoJCIKtAxIDEOESCggI2WUSAxDVEgoJCIX_AhIDEPkRCggIknESAxDhEgoJCM2zBhIDENESCgkI3q8GEgMQ4RI=' \
+  -H 'origin: https://www.hk.chinamobile.com' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://www.hk.chinamobile.com/tc/home-family/broadband' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCMORq8Xsi5YDFcRLDwId1sgGlA%3Bsrc%3D8724437%3Btype%3D20230007%3Bcat%3Dcmhk_0%3Brcb%3D4%3Bord%3D4235709935871%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7445048%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786013977_x9WpgOz3VV3w2ku8RVzDxglooz1Zvz1cEw%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24490' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCKb9oMvsi5YDFbmFpgMdoQIFxg%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D3997897875582%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7457461%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786013989_dJSwSsYy8RrTBDsBGY1UIzqzgFDLUoG97Q%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24481' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCITU9NLsi5YDFftLDwIdJU457Q%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D1741491907400%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7473511%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014005_is7svi_1h4Z_PI18VzkB1YWs28Ox3LSfoQ%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24465' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCIbmjNnsi5YDFZmcrwEdmyY6MA%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D5703109618525%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7486483%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014018_hSGF-6oPiSbKzGOZvjivXY-THHrNnmfVMA%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24452' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCN3vv97si5YDFS9GDwIdyc81ig%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D2594398930936%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7497818%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014029_BqgM4_Sxf4htxl0_N9YkZaLE0TxbR8SpSQ%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24440' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCNjk2-Psi5YDFcRLDwId1sgGlA%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D3304607856869%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7508756%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014040_Uy-BmQoHujRi9xzQoxslf_tVOSYGp4t9lA%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24429' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCIWSw-vsi5YDFR1MDwIdVLwdvg%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D8159822900111%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7525083%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014057_6ANVAWFZxcL_gIpHfWpgWMUXT4ph_Hmw3A%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24413' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCLe1x_Dsi5YDFe9IDwIdPRkclA%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D9684425599923%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7535683%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014067_biK6vkf6VPAF5shXBJrX1iYYlUDgqhtvKA%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24403' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCMupj4Tti5YDFZR3DwIdgGcnYw%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D5687777962627%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7576660%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014108_Odqr8JG0nEaPXjZaGT_fefMGWlw6pEiyPg%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24362' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://anylist.c.appier.net/r2?country=HK&enable_cookie_sync=1&url=https%3A%2F%2F8724437.fls.doubleclick.net%2Factivityi%3Bdc_pre%3DCMGrq8Xsi5YDFU2AKQMdMhYhwg%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_0%3Brcb%3D4%3Bord%3D8329833157228%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7445042%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786013977_31xs-66eBXpC8yiUyRhBbUjicSYnxPt6hA%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%3F&referer=https%3A%2F%2Fwww.hk.chinamobile.com%2Ftc%2Fhome-family%2Fbroadband&ssid=TgYWdWOsPqTxGWcfqQksEn&sessidx=194&siteuid=aQkIYEo7VO-bZSTz&appier_utmz=\{%22csr%22:%22(adwords%20gclid)%22,%22ccn%22:%22q3-always-on-local%22,%22cmd%22:%22sem%22,%22timestamp%22:1786006538,%22lcsr%22:%22(adwords%20gclid)%22\}&_t=1786014401315&_tz=8&uc=HK&tv=2.8.0&eqid=yhY4SEONjT-eL1Pp&ch=%7B%22architecture%22%3A%22x86%22%2C%22bitness%22%3A%2264%22%2C%22brands%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150%22%7D%5D%2C%22fullVersionList%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228.0.0.0%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150.0.7871.184%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150.0.7871.184%22%7D%5D%2C%22mobile%22%3Afalse%2C%22model%22%3A%22%22%2C%22platform%22%3A%22Windows%22%2C%22platformVersion%22%3A%2219.0.0%22%2C%22uaFullVersion%22%3A%22150.0.7871.184%22%7D&site=chinamobile.com&src=google&lt=424267' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -b '_csv=hk-18:BNCaQ; _csts=1785310031; _csidx=28; _auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://googleads.g.doubleclick.net/pagead/viewthroughconversion/989285595/?value=0&guid=ON&script=0&random=819641154129845400' \
+  -H 'accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -b 'ar_debug=1; IDE=AHWqTUkFoIti7ELA4Ejstsu3ZVi2o3kIEkPe1kBaLfeEW-rlE6Y66XoDyBT2XLNsegw; GCL_DC_P=GCL.1786006534.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE' \
+  -H 'priority: i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: image' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
+  -H 'x-browser-channel: stable' \
+  -H 'x-browser-copyright: Copyright 2026 Google LLC. All Rights Reserved.' \
+  -H 'x-browser-validation: J7BxyxXbBi6JShqs+au6SGvQHMM=' \
+  -H 'x-browser-year: 2026' \
+  -H 'x-client-data: CKmdygEIkqHLAQiFoM0B' ;
+curl 'https://googleads.g.doubleclick.net/pagead/viewthroughconversion/944142328/?value=0&guid=ON&script=0&random=1908942804621320700' \
+  -H 'accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -b 'ar_debug=1; IDE=AHWqTUkFoIti7ELA4Ejstsu3ZVi2o3kIEkPe1kBaLfeEW-rlE6Y66XoDyBT2XLNsegw; GCL_DC_P=GCL.1786006534.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE' \
+  -H 'priority: i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: image' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
+  -H 'x-browser-channel: stable' \
+  -H 'x-browser-copyright: Copyright 2026 Google LLC. All Rights Reserved.' \
+  -H 'x-browser-validation: J7BxyxXbBi6JShqs+au6SGvQHMM=' \
+  -H 'x-browser-year: 2026' \
+  -H 'x-client-data: CKmdygEIkqHLAQiFoM0B' ;
+curl 'https://anylist.c.appier.net/r3/d8cf?url=https%3A%2F%2F8724437.fls.doubleclick.net%2Factivityi%3Bdc_pre%3DCMGrq8Xsi5YDFU2AKQMdMhYhwg%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_0%3Brcb%3D4%3Bord%3D8329833157228%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7445042%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786013977_31xs-66eBXpC8yiUyRhBbUjicSYnxPt6hA%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%3F&referer=https%3A%2F%2Fwww.hk.chinamobile.com%2Ftc%2Fhome-family%2Fbroadband&ssid=TgYWdWOsPqTxGWcfqQksEn&sessidx=195&siteuid=aQkIYEo7VO-bZSTz&appier_utmz=\{%22csr%22:%22(adwords%20gclid)%22,%22ccn%22:%22q3-always-on-local%22,%22cmd%22:%22sem%22,%22timestamp%22:1786006538,%22lcsr%22:%22(adwords%20gclid)%22\}&_t=1786014401321&_tz=8&uc=HK&tv=2.8.0&eqid=8bU1dOcMAAvwCpZ_&ch=%7B%22architecture%22%3A%22x86%22%2C%22bitness%22%3A%2264%22%2C%22brands%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150%22%7D%5D%2C%22fullVersionList%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228.0.0.0%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150.0.7871.184%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150.0.7871.184%22%7D%5D%2C%22mobile%22%3Afalse%2C%22model%22%3A%22%22%2C%22platform%22%3A%22Windows%22%2C%22platformVersion%22%3A%2219.0.0%22%2C%22uaFullVersion%22%3A%22150.0.7871.184%22%7D&jsonparams=%7B%22t%22%3A%22type_engage%22%2C%22action_id%22%3A%22engage_leave%22%2C%22track_id%22%3A%22bad3a5604b476a7%22%2C%22content%22%3A%7B%22id%22%3A%22d8cf%22%7D%2C%22opts%22%3A%7B%22action_param1%22%3A24490%7D%7D&site=chinamobile.com&src=google' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://anylist.c.appier.net/r3/d8cf?url=https%3A%2F%2F8724437.fls.doubleclick.net%2Factivityi%3Bdc_pre%3DCMORq8Xsi5YDFcRLDwId1sgGlA%3Bsrc%3D8724437%3Btype%3D20230007%3Bcat%3Dcmhk_0%3Brcb%3D4%3Bord%3D4235709935871%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7445048%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786013977_x9WpgOz3VV3w2ku8RVzDxglooz1Zvz1cEw%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%3F&referer=https%3A%2F%2Fwww.hk.chinamobile.com%2Ftc%2Fhome-family%2Fbroadband&ssid=TgYWdWOsPqTxGWcfqQksEn&sessidx=196&siteuid=aQkIYEo7VO-bZSTz&appier_utmz=\{%22csr%22:%22(adwords%20gclid)%22,%22ccn%22:%22q3-always-on-local%22,%22cmd%22:%22sem%22,%22timestamp%22:1786006538,%22lcsr%22:%22(adwords%20gclid)%22\}&_t=1786014401328&_tz=8&uc=HK&tv=2.8.0&eqid=haJ3LYcAV_H1Q2Er&ch=%7B%22architecture%22%3A%22x86%22%2C%22bitness%22%3A%2264%22%2C%22brands%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150%22%7D%5D%2C%22fullVersionList%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228.0.0.0%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150.0.7871.184%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150.0.7871.184%22%7D%5D%2C%22mobile%22%3Afalse%2C%22model%22%3A%22%22%2C%22platform%22%3A%22Windows%22%2C%22platformVersion%22%3A%2219.0.0%22%2C%22uaFullVersion%22%3A%22150.0.7871.184%22%7D&jsonparams=%7B%22t%22%3A%22type_engage%22%2C%22action_id%22%3A%22engage_leave%22%2C%22track_id%22%3A%22bad3a5604b476a7%22%2C%22content%22%3A%7B%22id%22%3A%22d8cf%22%7D%2C%22opts%22%3A%7B%22action_param1%22%3A24490%7D%7D&site=chinamobile.com&src=google' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://anylist.c.appier.net/r3/d8cf?url=https%3A%2F%2F8724437.fls.doubleclick.net%2Factivityi%3Bdc_pre%3DCKb9oMvsi5YDFbmFpgMdoQIFxg%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D3997897875582%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7457461%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786013989_dJSwSsYy8RrTBDsBGY1UIzqzgFDLUoG97Q%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist%3F&referer=https%3A%2F%2Fwww.hk.chinamobile.com%2Ftc%2Fhome-family%2Fbroadband%2Flist&ssid=TgYWdWOsPqTxGWcfqQksEn&sessidx=197&siteuid=aQkIYEo7VO-bZSTz&appier_utmz=\{%22csr%22:%22(adwords%20gclid)%22,%22ccn%22:%22q3-always-on-local%22,%22cmd%22:%22sem%22,%22timestamp%22:1786006538,%22lcsr%22:%22(adwords%20gclid)%22\}&_t=1786014401337&_tz=8&uc=HK&tv=2.8.0&eqid=iz3UNGvkSgw-36Rx&ch=%7B%22architecture%22%3A%22x86%22%2C%22bitness%22%3A%2264%22%2C%22brands%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150%22%7D%5D%2C%22fullVersionList%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228.0.0.0%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150.0.7871.184%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150.0.7871.184%22%7D%5D%2C%22mobile%22%3Afalse%2C%22model%22%3A%22%22%2C%22platform%22%3A%22Windows%22%2C%22platformVersion%22%3A%2219.0.0%22%2C%22uaFullVersion%22%3A%22150.0.7871.184%22%7D&jsonparams=%7B%22t%22%3A%22type_engage%22%2C%22action_id%22%3A%22engage_leave%22%2C%22track_id%22%3A%22bad3a5604b476a7%22%2C%22content%22%3A%7B%22id%22%3A%22d8cf%22%7D%2C%22opts%22%3A%7B%22action_param1%22%3A24481%7D%7D&site=chinamobile.com&src=google' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://anylist.c.appier.net/r3/d8cf?url=https%3A%2F%2F8724437.fls.doubleclick.net%2Factivityi%3Bdc_pre%3DCITU9NLsi5YDFftLDwIdJU457Q%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D1741491907400%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7473511%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014005_is7svi_1h4Z_PI18VzkB1YWs28Ox3LSfoQ%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist%3F&referer=https%3A%2F%2Fwww.hk.chinamobile.com%2Ftc%2Fhome-family%2Fbroadband%2Flist&ssid=TgYWdWOsPqTxGWcfqQksEn&sessidx=198&siteuid=aQkIYEo7VO-bZSTz&appier_utmz=\{%22csr%22:%22(adwords%20gclid)%22,%22ccn%22:%22q3-always-on-local%22,%22cmd%22:%22sem%22,%22timestamp%22:1786006538,%22lcsr%22:%22(adwords%20gclid)%22\}&_t=1786014401342&_tz=8&uc=HK&tv=2.8.0&eqid=ezzvZKQuj_Tc7nR2&ch=%7B%22architecture%22%3A%22x86%22%2C%22bitness%22%3A%2264%22%2C%22brands%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150%22%7D%5D%2C%22fullVersionList%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228.0.0.0%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150.0.7871.184%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150.0.7871.184%22%7D%5D%2C%22mobile%22%3Afalse%2C%22model%22%3A%22%22%2C%22platform%22%3A%22Windows%22%2C%22platformVersion%22%3A%2219.0.0%22%2C%22uaFullVersion%22%3A%22150.0.7871.184%22%7D&jsonparams=%7B%22t%22%3A%22type_engage%22%2C%22action_id%22%3A%22engage_leave%22%2C%22track_id%22%3A%22bad3a5604b476a7%22%2C%22content%22%3A%7B%22id%22%3A%22d8cf%22%7D%2C%22opts%22%3A%7B%22action_param1%22%3A24465%7D%7D&site=chinamobile.com&src=google' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://anylist.c.appier.net/r3/d8cf?url=https%3A%2F%2F8724437.fls.doubleclick.net%2Factivityi%3Bdc_pre%3DCIbmjNnsi5YDFZmcrwEdmyY6MA%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D5703109618525%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7486483%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014018_hSGF-6oPiSbKzGOZvjivXY-THHrNnmfVMA%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist%3F&referer=https%3A%2F%2Fwww.hk.chinamobile.com%2Ftc%2Fhome-family%2Fbroadband%2Flist&ssid=TgYWdWOsPqTxGWcfqQksEn&sessidx=199&siteuid=aQkIYEo7VO-bZSTz&appier_utmz=\{%22csr%22:%22(adwords%20gclid)%22,%22ccn%22:%22q3-always-on-local%22,%22cmd%22:%22sem%22,%22timestamp%22:1786006538,%22lcsr%22:%22(adwords%20gclid)%22\}&_t=1786014401347&_tz=8&uc=HK&tv=2.8.0&eqid=2mdMVZEWmpul0b67&ch=%7B%22architecture%22%3A%22x86%22%2C%22bitness%22%3A%2264%22%2C%22brands%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150%22%7D%5D%2C%22fullVersionList%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228.0.0.0%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150.0.7871.184%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150.0.7871.184%22%7D%5D%2C%22mobile%22%3Afalse%2C%22model%22%3A%22%22%2C%22platform%22%3A%22Windows%22%2C%22platformVersion%22%3A%2219.0.0%22%2C%22uaFullVersion%22%3A%22150.0.7871.184%22%7D&jsonparams=%7B%22t%22%3A%22type_engage%22%2C%22action_id%22%3A%22engage_leave%22%2C%22track_id%22%3A%22bad3a5604b476a7%22%2C%22content%22%3A%7B%22id%22%3A%22d8cf%22%7D%2C%22opts%22%3A%7B%22action_param1%22%3A24452%7D%7D&site=chinamobile.com&src=google' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://anylist.c.appier.net/r3/d8cf?url=https%3A%2F%2F8724437.fls.doubleclick.net%2Factivityi%3Bdc_pre%3DCN3vv97si5YDFS9GDwIdyc81ig%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D2594398930936%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7497818%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014029_BqgM4_Sxf4htxl0_N9YkZaLE0TxbR8SpSQ%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist%3F&referer=https%3A%2F%2Fwww.hk.chinamobile.com%2Ftc%2Fhome-family%2Fbroadband%2Flist&ssid=TgYWdWOsPqTxGWcfqQksEn&sessidx=200&siteuid=aQkIYEo7VO-bZSTz&appier_utmz=\{%22csr%22:%22(adwords%20gclid)%22,%22ccn%22:%22q3-always-on-local%22,%22cmd%22:%22sem%22,%22timestamp%22:1786006538,%22lcsr%22:%22(adwords%20gclid)%22\}&_t=1786014401352&_tz=8&uc=HK&tv=2.8.0&eqid=tLJhwL59Ax920o4z&ch=%7B%22architecture%22%3A%22x86%22%2C%22bitness%22%3A%2264%22%2C%22brands%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150%22%7D%5D%2C%22fullVersionList%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228.0.0.0%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150.0.7871.184%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150.0.7871.184%22%7D%5D%2C%22mobile%22%3Afalse%2C%22model%22%3A%22%22%2C%22platform%22%3A%22Windows%22%2C%22platformVersion%22%3A%2219.0.0%22%2C%22uaFullVersion%22%3A%22150.0.7871.184%22%7D&jsonparams=%7B%22t%22%3A%22type_engage%22%2C%22action_id%22%3A%22engage_leave%22%2C%22track_id%22%3A%22bad3a5604b476a7%22%2C%22content%22%3A%7B%22id%22%3A%22d8cf%22%7D%2C%22opts%22%3A%7B%22action_param1%22%3A24440%7D%7D&site=chinamobile.com&src=google' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://anylist.c.appier.net/r3/d8cf?url=https%3A%2F%2F8724437.fls.doubleclick.net%2Factivityi%3Bdc_pre%3DCNjk2-Psi5YDFcRLDwId1sgGlA%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D3304607856869%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7508756%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014040_Uy-BmQoHujRi9xzQoxslf_tVOSYGp4t9lA%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist%3F&referer=https%3A%2F%2Fwww.hk.chinamobile.com%2Ftc%2Fhome-family%2Fbroadband%2Flist&ssid=TgYWdWOsPqTxGWcfqQksEn&sessidx=201&siteuid=aQkIYEo7VO-bZSTz&appier_utmz=\{%22csr%22:%22(adwords%20gclid)%22,%22ccn%22:%22q3-always-on-local%22,%22cmd%22:%22sem%22,%22timestamp%22:1786006538,%22lcsr%22:%22(adwords%20gclid)%22\}&_t=1786014401356&_tz=8&uc=HK&tv=2.8.0&eqid=LF-LllzEagDUEQJM&ch=%7B%22architecture%22%3A%22x86%22%2C%22bitness%22%3A%2264%22%2C%22brands%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150%22%7D%5D%2C%22fullVersionList%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228.0.0.0%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150.0.7871.184%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150.0.7871.184%22%7D%5D%2C%22mobile%22%3Afalse%2C%22model%22%3A%22%22%2C%22platform%22%3A%22Windows%22%2C%22platformVersion%22%3A%2219.0.0%22%2C%22uaFullVersion%22%3A%22150.0.7871.184%22%7D&jsonparams=%7B%22t%22%3A%22type_engage%22%2C%22action_id%22%3A%22engage_leave%22%2C%22track_id%22%3A%22bad3a5604b476a7%22%2C%22content%22%3A%7B%22id%22%3A%22d8cf%22%7D%2C%22opts%22%3A%7B%22action_param1%22%3A24429%7D%7D&site=chinamobile.com&src=google' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://anylist.c.appier.net/r3/d8cf?url=https%3A%2F%2F8724437.fls.doubleclick.net%2Factivityi%3Bdc_pre%3DCIWSw-vsi5YDFR1MDwIdVLwdvg%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D8159822900111%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7525083%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014057_6ANVAWFZxcL_gIpHfWpgWMUXT4ph_Hmw3A%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist%3F&referer=https%3A%2F%2Fwww.hk.chinamobile.com%2Ftc%2Fhome-family%2Fbroadband%2Flist&ssid=TgYWdWOsPqTxGWcfqQksEn&sessidx=202&siteuid=aQkIYEo7VO-bZSTz&appier_utmz=\{%22csr%22:%22(adwords%20gclid)%22,%22ccn%22:%22q3-always-on-local%22,%22cmd%22:%22sem%22,%22timestamp%22:1786006538,%22lcsr%22:%22(adwords%20gclid)%22\}&_t=1786014401360&_tz=8&uc=HK&tv=2.8.0&eqid=HjtOaJPc4nR_ZfWv&ch=%7B%22architecture%22%3A%22x86%22%2C%22bitness%22%3A%2264%22%2C%22brands%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150%22%7D%5D%2C%22fullVersionList%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228.0.0.0%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150.0.7871.184%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150.0.7871.184%22%7D%5D%2C%22mobile%22%3Afalse%2C%22model%22%3A%22%22%2C%22platform%22%3A%22Windows%22%2C%22platformVersion%22%3A%2219.0.0%22%2C%22uaFullVersion%22%3A%22150.0.7871.184%22%7D&jsonparams=%7B%22t%22%3A%22type_engage%22%2C%22action_id%22%3A%22engage_leave%22%2C%22track_id%22%3A%22bad3a5604b476a7%22%2C%22content%22%3A%7B%22id%22%3A%22d8cf%22%7D%2C%22opts%22%3A%7B%22action_param1%22%3A24413%7D%7D&site=chinamobile.com&src=google' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://anylist.c.appier.net/r3/d8cf?url=https%3A%2F%2F8724437.fls.doubleclick.net%2Factivityi%3Bdc_pre%3DCLe1x_Dsi5YDFe9IDwIdPRkclA%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D9684425599923%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7535683%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014067_biK6vkf6VPAF5shXBJrX1iYYlUDgqhtvKA%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist%3F&referer=https%3A%2F%2Fwww.hk.chinamobile.com%2Ftc%2Fhome-family%2Fbroadband%2Flist&ssid=TgYWdWOsPqTxGWcfqQksEn&sessidx=203&siteuid=aQkIYEo7VO-bZSTz&appier_utmz=\{%22csr%22:%22(adwords%20gclid)%22,%22ccn%22:%22q3-always-on-local%22,%22cmd%22:%22sem%22,%22timestamp%22:1786006538,%22lcsr%22:%22(adwords%20gclid)%22\}&_t=1786014401364&_tz=8&uc=HK&tv=2.8.0&eqid=zv6PtVzFx03BYPpP&ch=%7B%22architecture%22%3A%22x86%22%2C%22bitness%22%3A%2264%22%2C%22brands%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150%22%7D%5D%2C%22fullVersionList%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228.0.0.0%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150.0.7871.184%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150.0.7871.184%22%7D%5D%2C%22mobile%22%3Afalse%2C%22model%22%3A%22%22%2C%22platform%22%3A%22Windows%22%2C%22platformVersion%22%3A%2219.0.0%22%2C%22uaFullVersion%22%3A%22150.0.7871.184%22%7D&jsonparams=%7B%22t%22%3A%22type_engage%22%2C%22action_id%22%3A%22engage_leave%22%2C%22track_id%22%3A%22bad3a5604b476a7%22%2C%22content%22%3A%7B%22id%22%3A%22d8cf%22%7D%2C%22opts%22%3A%7B%22action_param1%22%3A24403%7D%7D&site=chinamobile.com&src=google' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://anylist.c.appier.net/r3/d8cf?url=https%3A%2F%2F8724437.fls.doubleclick.net%2Factivityi%3Bdc_pre%3DCMupj4Tti5YDFZR3DwIdgGcnYw%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D5687777962627%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7576660%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014108_Odqr8JG0nEaPXjZaGT_fefMGWlw6pEiyPg%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist%3F&referer=https%3A%2F%2Fwww.hk.chinamobile.com%2Ftc%2Fhome-family%2Fbroadband%2Flist&ssid=TgYWdWOsPqTxGWcfqQksEn&sessidx=204&siteuid=aQkIYEo7VO-bZSTz&appier_utmz=\{%22csr%22:%22(adwords%20gclid)%22,%22ccn%22:%22q3-always-on-local%22,%22cmd%22:%22sem%22,%22timestamp%22:1786006538,%22lcsr%22:%22(adwords%20gclid)%22\}&_t=1786014401368&_tz=8&uc=HK&tv=2.8.0&eqid=7q8KHdcIwTPDFRET&ch=%7B%22architecture%22%3A%22x86%22%2C%22bitness%22%3A%2264%22%2C%22brands%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150%22%7D%5D%2C%22fullVersionList%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228.0.0.0%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150.0.7871.184%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150.0.7871.184%22%7D%5D%2C%22mobile%22%3Afalse%2C%22model%22%3A%22%22%2C%22platform%22%3A%22Windows%22%2C%22platformVersion%22%3A%2219.0.0%22%2C%22uaFullVersion%22%3A%22150.0.7871.184%22%7D&jsonparams=%7B%22t%22%3A%22type_engage%22%2C%22action_id%22%3A%22engage_leave%22%2C%22track_id%22%3A%22bad3a5604b476a7%22%2C%22content%22%3A%7B%22id%22%3A%22d8cf%22%7D%2C%22opts%22%3A%7B%22action_param1%22%3A24362%7D%7D&site=chinamobile.com&src=google' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://www.google.com/pagead/1p-user-list/944142328/?value=0&guid=ON&script=0&random=1908942804621320700&is_vtc=1&cid=CAQS4QEAEQoqgSn2W-jWhEbok7_13d45FKC9pDscNd99dT92SHs6BdupgOweIXO4uDKbgRbLK9TZzGXte1MpJbJpu-tiOmSepnnT-XpuRKPTuyJTyrySdQ1IJDmpoJtggx9MCwFRdkQMaEGZgsroIm1eDvTRhFeEhVsM0W4w6j5dUKANSviIEdkBKSLrdhdf8sLTSLaGK1dQYNedP7C9QTKD7NjYpD1xOI_X809-5NmSlzDkkQ7X82mAm92cEP4CJuW_YX8WES_5Ql-iIzRQv_KXdXL26WIbNCboBo7zI61M1QA_Tf0&random=1991373905' \
+  -H 'accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -b '__Secure-3PAPISID=tjXG2Z9nTqWi9v26/ACCGxj1SoFZW6E1NO; __Secure-3PSID=g.a000Agkg2HQIXhB4ROmSa1q91kB30V4_fc71ft018g1iUkTqBuG7Z6IXgMSLojYnlhiSFFbOdQACgYKAS4SARASFQHGX2Miw47h-qdl2YmxFUTkpQkZ4RoVAUF8yKr0C8TmbuaGupUr0UtV6ZWo0076; GCL_AW_P=GCL.1786006534.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; NID=533=UP8_qlPY2PKLmuOQ2wg-PgkHn79ppKrx_t_XP2fAhW39BLXpVXPemp6HSvx-jL3UKXZKQDKr2YWQjDRnA1MDRf0ZmfIe2YZSQjrbN0eo2cAAidYxGhbYjfgjQTEE2B-RnYgx8qiCdWZurD3TR6_RH_p3ZKet9tU4vw7C7aPtle9ooan6n55oCjnLRTYUcQ9p4Y-FSeqyNSfVUXYp_48OjlFFNofYqHeuFAW50gA0dnDxgYITiZ2qmV2FSElXULZXRn5MVk9rAG-QibbcyRpWFGkfalMM6izNKOWDRV31xsXH1RngEEdsspscb4VGVeDWbRybN6nd3_h8zrYQq2xrJQVBt7XVKpKztrOa0zkFYzG6-UblTXnoKj9VF9xunDW6ndPBAnZe79vbDzomlXc4Cox1b8XJlOl07f7hwDDOlAQBdXmFxPVTg2QO0J11rjUj3XGPZcI8gkxzTGsrc46a5ip23NC82ZSBcKfK_bdJK-MEbJsOHL5b3hv5Epi2dr86AkWe5JyFPaoSYs7hMe1uoffREk8ldgTinPkdYZGMIGzOLiozCqeLlOv6gQCYHjpKGRqBSr9keKPLMoHOJnnLmEA2vDvxwLbhIaVb1cVDQjf02YWFhS6xjhUwFLHowHIYVgVVfy8P-3If91aBvnVjvDXhhlc-TR8oIaa7NTcl7Cvd3u-Yjdz3saENoLum0kAdpG3qnDaPhXU94MxyygIx4Z5xeg7NmirFft9RwMYHWLDj_KSxmqKXK0W4hneKtnGG9IlYc5Fr8PxA7WRas-D4lIv7FK0TcPlRIFgq; __Secure-3PSIDTS=sidts-CjYBPWEu2b2fGAY-qQec77-bW0pewo53OsLdC83nzT8PnXgX9IlnT85Ojj2jJOzlxM5ZBLeO-boQAA; __Secure-3PSIDRTS=sidts-CjYBPWEu2b2fGAY-qQec77-bW0pewo53OsLdC83nzT8PnXgX9IlnT85Ojj2jJOzlxM5ZBLeO-boQAA; __Secure-3PSIDCC=AKEyXzVa01RRwPbmdiDsRxWX_hQTwKBJRrpYowshKgiqSqkfX5v4YYjVm9IFrgnW7_LK1ZzneFsu' \
+  -H 'priority: i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: image' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
+  -H 'x-browser-channel: stable' \
+  -H 'x-browser-copyright: Copyright 2026 Google LLC. All Rights Reserved.' \
+  -H 'x-browser-validation: J7BxyxXbBi6JShqs+au6SGvQHMM=' \
+  -H 'x-browser-year: 2026' \
+  -H 'x-client-data: CKmdygEIkqHLAQiFoM0B' ;
+curl 'https://www.google.com/pagead/1p-user-list/989285595/?value=0&guid=ON&script=0&random=819641154129845400&is_vtc=1&cid=CAQS4QEAEQoqga_8NmD9qNepTrbijohN1Uh4GiuADbC98R78C6AFvWP1mtNf1173tBYxnZBN7xratOaCyadX9Phy8U0CqyDM8EbEjnDHahptYHEJs-c6ZS49RJ0AHpQE1hqkdfmQcaPTBVPUtofHkbeRwNRmEzpoO49dBAYByoHEUhFzWfmv0CMA5ci2ppxLto-dRq2NZ-nxtOl-lFJtuSWxb3c5B04vdRa8Rk63MwwE8TBPjuNLF6cFq7xbgpKtgG7n16UoWMnVSjkHLYD-rdPCqNQVRVZSyh0kZC_FAuIEYVCdk7A&random=3977723981' \
+  -H 'accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -b '__Secure-3PAPISID=tjXG2Z9nTqWi9v26/ACCGxj1SoFZW6E1NO; __Secure-3PSID=g.a000Agkg2HQIXhB4ROmSa1q91kB30V4_fc71ft018g1iUkTqBuG7Z6IXgMSLojYnlhiSFFbOdQACgYKAS4SARASFQHGX2Miw47h-qdl2YmxFUTkpQkZ4RoVAUF8yKr0C8TmbuaGupUr0UtV6ZWo0076; GCL_AW_P=GCL.1786006534.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; NID=533=UP8_qlPY2PKLmuOQ2wg-PgkHn79ppKrx_t_XP2fAhW39BLXpVXPemp6HSvx-jL3UKXZKQDKr2YWQjDRnA1MDRf0ZmfIe2YZSQjrbN0eo2cAAidYxGhbYjfgjQTEE2B-RnYgx8qiCdWZurD3TR6_RH_p3ZKet9tU4vw7C7aPtle9ooan6n55oCjnLRTYUcQ9p4Y-FSeqyNSfVUXYp_48OjlFFNofYqHeuFAW50gA0dnDxgYITiZ2qmV2FSElXULZXRn5MVk9rAG-QibbcyRpWFGkfalMM6izNKOWDRV31xsXH1RngEEdsspscb4VGVeDWbRybN6nd3_h8zrYQq2xrJQVBt7XVKpKztrOa0zkFYzG6-UblTXnoKj9VF9xunDW6ndPBAnZe79vbDzomlXc4Cox1b8XJlOl07f7hwDDOlAQBdXmFxPVTg2QO0J11rjUj3XGPZcI8gkxzTGsrc46a5ip23NC82ZSBcKfK_bdJK-MEbJsOHL5b3hv5Epi2dr86AkWe5JyFPaoSYs7hMe1uoffREk8ldgTinPkdYZGMIGzOLiozCqeLlOv6gQCYHjpKGRqBSr9keKPLMoHOJnnLmEA2vDvxwLbhIaVb1cVDQjf02YWFhS6xjhUwFLHowHIYVgVVfy8P-3If91aBvnVjvDXhhlc-TR8oIaa7NTcl7Cvd3u-Yjdz3saENoLum0kAdpG3qnDaPhXU94MxyygIx4Z5xeg7NmirFft9RwMYHWLDj_KSxmqKXK0W4hneKtnGG9IlYc5Fr8PxA7WRas-D4lIv7FK0TcPlRIFgq; __Secure-3PSIDTS=sidts-CjYBPWEu2b2fGAY-qQec77-bW0pewo53OsLdC83nzT8PnXgX9IlnT85Ojj2jJOzlxM5ZBLeO-boQAA; __Secure-3PSIDRTS=sidts-CjYBPWEu2b2fGAY-qQec77-bW0pewo53OsLdC83nzT8PnXgX9IlnT85Ojj2jJOzlxM5ZBLeO-boQAA; __Secure-3PSIDCC=AKEyXzVa01RRwPbmdiDsRxWX_hQTwKBJRrpYowshKgiqSqkfX5v4YYjVm9IFrgnW7_LK1ZzneFsu' \
+  -H 'priority: i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: image' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
+  -H 'x-browser-channel: stable' \
+  -H 'x-browser-copyright: Copyright 2026 Google LLC. All Rights Reserved.' \
+  -H 'x-browser-validation: J7BxyxXbBi6JShqs+au6SGvQHMM=' \
+  -H 'x-browser-year: 2026' \
+  -H 'x-client-data: CKmdygEIkqHLAQiFoM0B' ;
+curl 'https://www.google.com.hk/pagead/1p-user-list/989285595/?value=0&guid=ON&script=0&random=819641154129845400&is_vtc=1&cid=CAQS4QEAEQoqga_8NmD9qNepTrbijohN1Uh4GiuADbC98R78C6AFvWP1mtNf1173tBYxnZBN7xratOaCyadX9Phy8U0CqyDM8EbEjnDHahptYHEJs-c6ZS49RJ0AHpQE1hqkdfmQcaPTBVPUtofHkbeRwNRmEzpoO49dBAYByoHEUhFzWfmv0CMA5ci2ppxLto-dRq2NZ-nxtOl-lFJtuSWxb3c5B04vdRa8Rk63MwwE8TBPjuNLF6cFq7xbgpKtgG7n16UoWMnVSjkHLYD-rdPCqNQVRVZSyh0kZC_FAuIEYVCdk7A&random=3977723981&ipr=y' \
+  -H 'accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -b '__Secure-3PAPISID=tjXG2Z9nTqWi9v26/ACCGxj1SoFZW6E1NO; NID=530=hyVuxNCWndMU946NuLqaZVdBUe6kQKQd-jYycGelohd2soO7mW6CoqZ-Dxe3JqalkINOJWE0YFxdmoGv6sSNO1-VsjtQNja0jQoaet67NLyeCV0Gw9m78exuNSSPKObDuCac-tWEaVcNi-6XiQAKf_XUnN9-6mruvMXI6o94ZbXp9xvet8uruCI0nBPJMGil9atK25LUstKvbvLbb0SHpb-vZMuEef2pFJWzTx18-_DsFbvvbv8XEMLZNkNz7bvAReCRgNgZg7RVdD3pd-99fSARMNieAaNHCZXjUTKKYc0t1jdmy_JWZ5EcEcKVGAdmoeZfO8f2ADLb4zCvWs7mxCy3lPcjRWq08BJhzH34EqH7nzCNZ3TW_qkeRMnP29qN6X98WPDks_VvUaEFeH7uR623zVtMSLwOobXqTABC4XuzSgP8K7AYP5UJ7vJB18_PRKOhlk6op3bBi2KGCI3QRSfJWHzmj8ZIn8CVbO7EuDVpKUkFn_CQPbVCDNrNTYLOZr0k1nmVt0P_ZF9UmaKgJtPIlNUPx4CmJyr8ywUPXDIDtr9dCKhvttpgpGDzkSMmTj8b2yj71wBsGTRrMyE3wUoiWebnxHJLwh3DECIxAIB8544lj_dAfCMOGXWGkQqE4jx6iMBhrIw4dJdl0z_0s4_XeA; __Secure-3PSID=g.a0008Agg2LV1QmEl6rJeKpM4RAZQ1l6djLiLiRcCyXjoDVW40l8zMdD2v2_wxdB_WO1sD0gwTgACgYKAbcSARASFQHGX2MiEX39UEgcnCg9BAQKGSTzJRoVAUF8yKoU4S_iIiaTp9i_DJqN30wL0076' \
+  -H 'priority: i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: image' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
+  -H 'x-browser-channel: stable' \
+  -H 'x-browser-copyright: Copyright 2026 Google LLC. All Rights Reserved.' \
+  -H 'x-browser-validation: J7BxyxXbBi6JShqs+au6SGvQHMM=' \
+  -H 'x-browser-year: 2026' \
+  -H 'x-client-data: CKmdygEIkqHLAQiFoM0B' ;
+curl 'https://www.google.com.hk/pagead/1p-user-list/944142328/?value=0&guid=ON&script=0&random=1908942804621320700&is_vtc=1&cid=CAQS4QEAEQoqgSn2W-jWhEbok7_13d45FKC9pDscNd99dT92SHs6BdupgOweIXO4uDKbgRbLK9TZzGXte1MpJbJpu-tiOmSepnnT-XpuRKPTuyJTyrySdQ1IJDmpoJtggx9MCwFRdkQMaEGZgsroIm1eDvTRhFeEhVsM0W4w6j5dUKANSviIEdkBKSLrdhdf8sLTSLaGK1dQYNedP7C9QTKD7NjYpD1xOI_X809-5NmSlzDkkQ7X82mAm92cEP4CJuW_YX8WES_5Ql-iIzRQv_KXdXL26WIbNCboBo7zI61M1QA_Tf0&random=1991373905&ipr=y' \
+  -H 'accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -b '__Secure-3PAPISID=tjXG2Z9nTqWi9v26/ACCGxj1SoFZW6E1NO; NID=530=hyVuxNCWndMU946NuLqaZVdBUe6kQKQd-jYycGelohd2soO7mW6CoqZ-Dxe3JqalkINOJWE0YFxdmoGv6sSNO1-VsjtQNja0jQoaet67NLyeCV0Gw9m78exuNSSPKObDuCac-tWEaVcNi-6XiQAKf_XUnN9-6mruvMXI6o94ZbXp9xvet8uruCI0nBPJMGil9atK25LUstKvbvLbb0SHpb-vZMuEef2pFJWzTx18-_DsFbvvbv8XEMLZNkNz7bvAReCRgNgZg7RVdD3pd-99fSARMNieAaNHCZXjUTKKYc0t1jdmy_JWZ5EcEcKVGAdmoeZfO8f2ADLb4zCvWs7mxCy3lPcjRWq08BJhzH34EqH7nzCNZ3TW_qkeRMnP29qN6X98WPDks_VvUaEFeH7uR623zVtMSLwOobXqTABC4XuzSgP8K7AYP5UJ7vJB18_PRKOhlk6op3bBi2KGCI3QRSfJWHzmj8ZIn8CVbO7EuDVpKUkFn_CQPbVCDNrNTYLOZr0k1nmVt0P_ZF9UmaKgJtPIlNUPx4CmJyr8ywUPXDIDtr9dCKhvttpgpGDzkSMmTj8b2yj71wBsGTRrMyE3wUoiWebnxHJLwh3DECIxAIB8544lj_dAfCMOGXWGkQqE4jx6iMBhrIw4dJdl0z_0s4_XeA; __Secure-3PSID=g.a0008Agg2LV1QmEl6rJeKpM4RAZQ1l6djLiLiRcCyXjoDVW40l8zMdD2v2_wxdB_WO1sD0gwTgACgYKAbcSARASFQHGX2MiEX39UEgcnCg9BAQKGSTzJRoVAUF8yKoU4S_iIiaTp9i_DJqN30wL0076' \
+  -H 'priority: i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: image' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
+  -H 'x-browser-channel: stable' \
+  -H 'x-browser-copyright: Copyright 2026 Google LLC. All Rights Reserved.' \
+  -H 'x-browser-validation: J7BxyxXbBi6JShqs+au6SGvQHMM=' \
+  -H 'x-browser-year: 2026' \
+  -H 'x-client-data: CKmdygEIkqHLAQiFoM0B' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCMGrq8Xsi5YDFU2AKQMdMhYhwg%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_0%3Brcb%3D4%3Bord%3D8329833157228%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7445042%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786013977_31xs-66eBXpC8yiUyRhBbUjicSYnxPt6hA%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24492' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://anylist.c.appier.net/r3/d8cf?url=https%3A%2F%2F8724437.fls.doubleclick.net%2Factivityi%3Bdc_pre%3DCMGrq8Xsi5YDFU2AKQMdMhYhwg%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_0%3Brcb%3D4%3Bord%3D8329833157228%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7445042%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786013977_31xs-66eBXpC8yiUyRhBbUjicSYnxPt6hA%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%3F&referer=https%3A%2F%2Fwww.hk.chinamobile.com%2Ftc%2Fhome-family%2Fbroadband&ssid=TgYWdWOsPqTxGWcfqQksEn&sessidx=205&siteuid=aQkIYEo7VO-bZSTz&appier_utmz=\{%22csr%22:%22(adwords%20gclid)%22,%22ccn%22:%22q3-always-on-local%22,%22cmd%22:%22sem%22,%22timestamp%22:1786006538,%22lcsr%22:%22(adwords%20gclid)%22\}&_t=1786014590320&_tz=8&uc=HK&tv=2.8.0&eqid=9FAZZ4iT6Y-9PxXr&ch=%7B%22architecture%22%3A%22x86%22%2C%22bitness%22%3A%2264%22%2C%22brands%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150%22%7D%5D%2C%22fullVersionList%22%3A%5B%7B%22brand%22%3A%22Not%3BA%3DBrand%22%2C%22version%22%3A%228.0.0.0%22%7D%2C%7B%22brand%22%3A%22Chromium%22%2C%22version%22%3A%22150.0.7871.184%22%7D%2C%7B%22brand%22%3A%22Google%20Chrome%22%2C%22version%22%3A%22150.0.7871.184%22%7D%5D%2C%22mobile%22%3Afalse%2C%22model%22%3A%22%22%2C%22platform%22%3A%22Windows%22%2C%22platformVersion%22%3A%2219.0.0%22%2C%22uaFullVersion%22%3A%22150.0.7871.184%22%7D&jsonparams=%7B%22t%22%3A%22type_engage%22%2C%22action_id%22%3A%22engage_leave%22%2C%22track_id%22%3A%22bad3a5604b476a7%22%2C%22content%22%3A%7B%22id%22%3A%22d8cf%22%7D%2C%22opts%22%3A%7B%22action_param1%22%3A24492%7D%7D&site=chinamobile.com&src=google' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCMORq8Xsi5YDFcRLDwId1sgGlA%3Bsrc%3D8724437%3Btype%3D20230007%3Bcat%3Dcmhk_0%3Brcb%3D4%3Bord%3D4235709935871%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7445048%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786013977_x9WpgOz3VV3w2ku8RVzDxglooz1Zvz1cEw%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24496' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCKb9oMvsi5YDFbmFpgMdoQIFxg%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D3997897875582%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7457461%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786013989_dJSwSsYy8RrTBDsBGY1UIzqzgFDLUoG97Q%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24496' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCITU9NLsi5YDFftLDwIdJU457Q%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D1741491907400%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7473511%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014005_is7svi_1h4Z_PI18VzkB1YWs28Ox3LSfoQ%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24496' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCIbmjNnsi5YDFZmcrwEdmyY6MA%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D5703109618525%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7486483%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014018_hSGF-6oPiSbKzGOZvjivXY-THHrNnmfVMA%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24496' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCN3vv97si5YDFS9GDwIdyc81ig%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D2594398930936%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7497818%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014029_BqgM4_Sxf4htxl0_N9YkZaLE0TxbR8SpSQ%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24496' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCNjk2-Psi5YDFcRLDwId1sgGlA%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D3304607856869%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7508756%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014040_Uy-BmQoHujRi9xzQoxslf_tVOSYGp4t9lA%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24496' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCIWSw-vsi5YDFR1MDwIdVLwdvg%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D8159822900111%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7525083%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014057_6ANVAWFZxcL_gIpHfWpgWMUXT4ph_Hmw3A%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24496' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCLe1x_Dsi5YDFe9IDwIdPRkclA%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D9684425599923%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7535683%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014067_biK6vkf6VPAF5shXBJrX1iYYlUDgqhtvKA%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24496' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' ;
+curl 'https://t0.c.appier.net/web2/bad3a5604b476a7/?appier_utmz_utmcsr=(adwords%20gclid)&action_id=engage_leave&path=%2Factivityi%3Bdc_pre%3DCMupj4Tti5YDFZR3DwIdgGcnYw%3Bsrc%3D8724437%3Btype%3D2023000%3Bcat%3Dcmhk_00%3Brcb%3D4%3Bord%3D5687777962627%3Bnpa%3D0%3Bauiddc%3D346306711.1782746843%3Bgcldc%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Bgclgs%3D1%3Bgclst%3D7576660%3Bgcllp%3D31404454%3Bgclaw%3DEAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE%3Buaa%3Dx86%3Buab%3D64%3Buafvl%3DNot%25253BA%25253DBrand%253B8.0.0.0%257CChromium%253B150.0.7871.184%257CGoogle%252520Chrome%253B150.0.7871.184%3Buamb%3D0%3Buam%3D%3Buap%3DWindows%3Buapv%3D19.0.0%3Buaw%3D0%3Bpscdl%3Dnoapi%3Bfrm%3D0%3B_tu%3DKFA%3Bgtm%3D45fe6841v9190283801z89126927360za20gzb9126927360zd9126927360xea%3Bgcd%3D13l3l3l3l1l1%3Bdma%3D0%3Bdc_fmt%3D2%3Btag_exp%3D115616986~115938465~115938469~117227716~118395334~118897920~118897930~119527020~119896803%3Bepver%3D2%3Bdc_random%3D1786014108_Odqr8JG0nEaPXjZaGT_fefMGWlw6pEiyPg%3B_dc_test%3D1%3B~oref%3Dhttps%253A%252F%252Fwww.hk.chinamobile.com%252Ftc%252Fhome-family%252Fbroadband%252Flist&cookie_uid=aQkIYEo7VO-bZSTz&api_version=1&escaped_qs=&action_param1=24496' \
+  -X 'POST' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7' \
+  -H 'content-length: 0' \
+  -b '_auid=FlmPIrfMCaG3s-jhlBNCaQ' \
+  -H 'origin: https://8724437.fls.doubleclick.net' \
+  -H 'priority: u=4, i' \
+  -H 'referer: https://8724437.fls.doubleclick.net/' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-storage-access: active' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.” 接口进行分析，入参是我输入的地址列表，获取返回值的busiResp的busiDataResp列表的第一个元素记为busiDataRespObj构造入参调curl 'https://www.hk.chinamobile.com/api/ecosp-emall/itemRest/homeBroadBand/searchAddress?XGiOG2f705=bbl1712814418A526Sfpn0d4a5e18E3RIIAJ_CUZ5n8JfrV.qCZqptSgBDe60oMPAStYAOWqTXWZO_dTei1vqbRMqDmbaPul3E6Q7DCIUR3D7Q_CGjwk_ZfHnzaQakocrXrCGIWHpiNKYIE5yHCT1HZs98aksvJxxXQlEucE1cTMnVZhS8SJjrmzxybcBMRjgZNa4u1BZyjjFEb1RXuPNnhM7k5X2m8270JD6SYNb3ImTL.wb8T3SdHPbYLVpZ7bt5jPnYQD2sKNBMDkmWipErBPTLKm6wB5lDH1aavjQ_Mboag2GbbCw7zkuauuBXC9RG3gUU4g' \
+  -H 'acc-lang: zh-HK' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: zh-HK' \
+  -H 'api-version: 2' \
+  -H 'channelid: WWW' \
+  -H 'cmhkchannel: WWW' \
+  -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -b 'JSESSIONID=GA1.1.56908290.1768204479; _ga=GA1.1.56908290.1768204479; __qca=P1-37bb6929-0d7f-42d1-8dc3-aa3c40177a17; _ga_3L8BEE33WB=GS2.1.s1773396484$o2$g0$t1773396484$j60$l0$h0; _gcl_au=1.1.346306711.1782746843; _fbp=fb.1.1782746843462.650640671629310150; lang=zh-HK; _clck=1fjef3a%5E2%5Eg8a%5E0%5E2371; _gcl_gs=2.1.k1$i1786006532$u31404454; JSESSIONID_USER=l868CD0B10423E37A138282160500395B-1; _gcl_aw=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; _gcl_dc=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; tfpsi=1304e250-4285-4b15-95e2-476640180889; _ga_W9GR00K3WL=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; _ga_8W8T13PN7Z=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; 1P_JAR636e=gq1898666766skDAh6Pp0bdc0220Psb2Zq.FZTpAlWl1VXbkylLORZ_Xqjg8aib9jj4yxWv_huVl9ysJnpzErxukXSuAhRKK5L1M9yJ89BpFeXcOY6DZOe6uBQNT48AEh6onIbNvqSirJmx_tlVEZgh6dRNkUEZaWyMLWTWDPzMlAXiXYl78VDbSEtMbBSUsCf0H8Gq1d5CE8fhDcmmipUmBreix7RDHekl9jLM3kfqGawgOqrGx8yiFkuH.eRujxR1I8ycyWesgZdeseXuAeGwkK3hqo6yWNO1sUXJDFRe7NtMKqMKy6SgPSfdOOEtECbS2r34; zA7uZWGUB1=11C4v01585dIi313pY/qn55EXXdeZ8VU9pZekw==' \
+  -H 'omni-client-device-id: OCD0202603132032360919656300544' \
+  -H 'omni-tracking-info: %7B%22clickTime%22%3A%222026-08-06%2019%3A16%3A16%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F150.0.0.0%20Safari%2F537.36%22%2C%22version%22%3A%222.2.0%22%2C%22platform%22%3A%22windows%22%2C%22network%22%3A%224g%22%2C%22regionCode%22%3A%22%22%2C%22osVersion%22%3A%22Windows%20NT%2010.0%22%2C%22phone%22%3A%22%22%2C%22userType%22%3A%22%22%2C%22serviceType%22%3A%22%22%7D' \
+  -H 'origin: https://www.hk.chinamobile.com' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://www.hk.chinamobile.com/tc/home-family/broadband' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
+  --data-raw 'busInfo=%7B%22keyword%22%3A%22%E7%AC%AC9%E5%BA%A7%2C%E7%BF%A0%E6%93%81%E8%8F%AF%E5%BA%AD%2C%E6%B2%99%E5%AE%89%E8%A1%97%2C%E9%A6%AC%E9%9E%8D%E5%B1%B1%2C%E6%96%B0%E7%95%8C%22%7D' ;
+curl 'https://www.hk.chinamobile.com/api/ecosp-emall/itemRest/homeBroadBand/getAddressDetail?XGiOG2f705=bcm4144366323GS6GX48t019be481C06oVFDwrNX8hLpAN7VuySvetS3Ib0v2b52UUhQnlMPvaH9qRjSz_raGxkxVUGWGziO.NvouFT2zf7M3SOS87.WH8IK1f_fuZwcoEOoF.TMFRbjeosGeBc68HNuEm8v6PtyrwrDrfa2xOhCVFB5YLGBrXcN220IV1Frr5iHDO6uaBGw7AoY3VYIgag.GlIxajHJhhim9mjOznM5Kw.biMvEQM_gqiGADDsUY8BByvZIrbKcq6MOxJ_fC5FLuPX3JeJPFPV_913TDaVak73e_5gbmQ55Vrh.qH6ir_E9PKz0' \
+  -H 'acc-lang: zh-HK' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: zh-HK' \
+  -H 'api-version: 2' \
+  -H 'channelid: WWW' \
+  -H 'cmhkchannel: WWW' \
+  -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -b 'JSESSIONID=GA1.1.56908290.1768204479; _ga=GA1.1.56908290.1768204479; __qca=P1-37bb6929-0d7f-42d1-8dc3-aa3c40177a17; _ga_3L8BEE33WB=GS2.1.s1773396484$o2$g0$t1773396484$j60$l0$h0; _gcl_au=1.1.346306711.1782746843; _fbp=fb.1.1782746843462.650640671629310150; lang=zh-HK; _clck=1fjef3a%5E2%5Eg8a%5E0%5E2371; _gcl_gs=2.1.k1$i1786006532$u31404454; JSESSIONID_USER=l868CD0B10423E37A138282160500395B-1; _gcl_aw=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; _gcl_dc=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; tfpsi=1304e250-4285-4b15-95e2-476640180889; _ga_W9GR00K3WL=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; _ga_8W8T13PN7Z=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; zA7uZWGUB1=Q8AL9ar6RzIX84I15yISJkePze5nqYYQ+CyIfQ==; 1P_JAR636e=eo2795562181AQWKSYYC0566ed4al_XJkRv4B97d9i9ajw7xSdR0DHtawHWWu1utz6K.deDz7eqMMvAzz4Q2SX5TM2pOkSyHgqQ6TJlAhnaPy5sU9Ya7GmEI1aq0H_fZ60C_E0..yP2l7TH..Lg_gQeeNbJK7WcmqYgfJ6jgYSlrB9dO3JfO10qSDb1ehrBMRfkEwZmWSjuCD1fgACOWfN5Yhc9FnrQjKi2Fy_lb1E_nBWqJQyt82kHOHJaQAxd.EL2.R9H_HESqz6uvD2XSGtFaqdaUK9P5C0rTmQVep21aGLHdVbj.02os4Q5LIEZ3a_aG.xo' \
+  -H 'omni-client-device-id: OCD0202603132032360919656300544' \
+  -H 'omni-tracking-info: %7B%22clickTime%22%3A%222026-08-06%2019%3A16%3A18%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F150.0.0.0%20Safari%2F537.36%22%2C%22version%22%3A%222.2.0%22%2C%22platform%22%3A%22windows%22%2C%22network%22%3A%224g%22%2C%22regionCode%22%3A%22%22%2C%22osVersion%22%3A%22Windows%20NT%2010.0%22%2C%22phone%22%3A%22%22%2C%22userType%22%3A%22%22%2C%22serviceType%22%3A%22%22%7D' \
+  -H 'origin: https://www.hk.chinamobile.com' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://www.hk.chinamobile.com/tc/home-family/broadband' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
+  --data-raw 'orderStr=%7B%22carrierInfo%22%3A%5B%7B%22addressCode%22%3A%227574190008%22%2C%22carrier%22%3A%22CMHK%22%2C%22priority%22%3A1%7D%2C%7B%22addressCode%22%3A%227574190008%22%2C%22carrier%22%3A%22I-CABLE%22%2C%22priority%22%3A2%7D%2C%7B%22addressCode%22%3A%2262012%22%2C%22carrier%22%3A%22HKBN%22%2C%22priority%22%3A3%7D%5D%2C%22clientType%22%3A%22STANDALONE%22%2C%22ofcaCode%22%3A%2262012%22%2C%22description%22%3A%22%3Cspan%20class%3D%27keyWord%27%3E%E7%AC%AC9%E5%BA%A7%3C%2Fspan%3E%2C%3Cspan%20class%3D%27keyWord%27%3E%E7%BF%A0%E6%93%81%E8%8F%AF%E5%BA%AD%3C%2Fspan%3E%2C%3Cspan%20class%3D%27keyWord%27%3E%E6%B2%99%E5%AE%89%E8%A1%97%3C%2Fspan%3E%2C%3Cspan%20class%3D%27keyWord%27%3E%E9%A6%AC%E9%9E%8D%E5%B1%B1%3C%2Fspan%3E%2C%3Cspan%20class%3D%27keyWord%27%3E%E6%96%B0%E7%95%8C%3C%2Fspan%3E%22%2C%22custCode%22%3A%22%22%2C%22value%22%3A%22%E7%AC%AC9%E5%BA%A7%2C%E7%BF%A0%E6%93%81%E8%8F%AF%E5%BA%AD%2C%E6%B2%99%E5%AE%89%E8%A1%97%2C%E9%A6%AC%E9%9E%8D%E5%B1%B1%2C%E6%96%B0%E7%95%8C%22%7D' ;
+curl 'https://www.hk.chinamobile.com/api/ecosp-emall/itemRest/homeBroadBand/searchAddress?XGiOG2f705=bcl3741846868YtwiCns5886a572S87TMZ0n_P2S1VMOyk02SD2d0y0cVWkRYqPRlO6cl3mPFmTStw9Iu5Ql5lAe_XBF4NaDyuvCAdI1trO3Dm1Z15_FDAUpnEBwwYLPOGwC0GnJn1UfhEIpeO9B5QrLNAcdZC9VoTUndCku0NtgzNTk8g4bHkERw1K4kALm6oQCZnqY7YxsW0jvakYdvGhvOJEGdOxAI3W3fZ0HjT9BwizsK.UbWCRY8KEemYoZM5J3kMKmkgXKD3khgn7O.oM7lygSlCCsfy6XWQMoAayw_f12oKmvt60.qS0kyD3jHHjYbjI' \
+  -H 'acc-lang: zh-HK' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: zh-HK' \
+  -H 'api-version: 2' \
+  -H 'channelid: WWW' \
+  -H 'cmhkchannel: WWW' \
+  -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -b 'JSESSIONID=GA1.1.56908290.1768204479; _ga=GA1.1.56908290.1768204479; __qca=P1-37bb6929-0d7f-42d1-8dc3-aa3c40177a17; _ga_3L8BEE33WB=GS2.1.s1773396484$o2$g0$t1773396484$j60$l0$h0; _gcl_au=1.1.346306711.1782746843; _fbp=fb.1.1782746843462.650640671629310150; lang=zh-HK; _clck=1fjef3a%5E2%5Eg8a%5E0%5E2371; _gcl_gs=2.1.k1$i1786006532$u31404454; JSESSIONID_USER=l868CD0B10423E37A138282160500395B-1; _gcl_aw=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; _gcl_dc=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; tfpsi=1304e250-4285-4b15-95e2-476640180889; _ga_W9GR00K3WL=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; _ga_8W8T13PN7Z=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; 1P_JAR636e=eo2795562181AQWKSYYC0566ed4al_XJkRv4B97d9i9ajw7xSdR0DHtawHWWu1utz6K.deDz7eqMMvAzz4Q2SX5TM2pOkSyHgqQ6TJlAhnaPy5sU9Ya7GmEI1aq0H_fZ60C_E0..yP2l7TH..Lg_gQeeNbJK7WcmqYgfJ6jgYSlrB9dO3JfO10qSDb1ehrBMRfkEwZmWSjuCD1fgACOWfN5Yhc9FnrQjKi2Fy_lb1E_nBWqJQyt82kHOHJaQAxd.EL2.R9H_HESqz6uvD2XSGtFaqdaUK9P5C0rTmQVep21aGLHdVbj.02os4Q5LIEZ3a_aG.xo; zA7uZWGUB1=RRI4dY7fy4K32ntlxNkigMrxfaQrirFSYCBF6A==' \
+  -H 'omni-client-device-id: OCD0202603132032360919656300544' \
+  -H 'omni-tracking-info: %7B%22clickTime%22%3A%222026-08-06%2019%3A18%3A54%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F150.0.0.0%20Safari%2F537.36%22%2C%22version%22%3A%222.2.0%22%2C%22platform%22%3A%22windows%22%2C%22network%22%3A%224g%22%2C%22regionCode%22%3A%22%22%2C%22osVersion%22%3A%22Windows%20NT%2010.0%22%2C%22phone%22%3A%22%22%2C%22userType%22%3A%22%22%2C%22serviceType%22%3A%22%22%7D' \
+  -H 'origin: https://www.hk.chinamobile.com' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://www.hk.chinamobile.com/tc/home-family/broadband' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
+  --data-raw 'busInfo=%7B%22keyword%22%3A%22%E7%AC%AC9%E5%BA%A7%2C%E7%BF%A0%E6%93%81%E8%8F%AF%E5%BA%AD%2C%E6%B2%99%E5%AE%89%E8%A1%97%2C%E9%A6%AC%E9%9E%8D%E5%B1%B1%2C%E6%96%B0%E7%95%8C%22%7D' ;
+curl 'https://www.hk.chinamobile.com/api/ecosp-emall/itemRest/homeBroadBand/getAddressDetail?XGiOG2f705=bdn3964411981mfEe7jJB721579e3r7MRlsL2ureVsxm_LFe.8yNwNBrcSpsBNj_lxIgkfvMj7o0uiPj_RMF_UM4WyQY6O2LLVk.WBugHeHWk.w50orQR7woeV4dxDofPQaosPxAH4t4UOEQI6bfiDYeQhDYa5EI7zxo8UEVGDkxYkt8laSeAaJxnZ7uO7rbW5IGBrchHnCRzfOfxQWFw9iYqGEL1hTvxIOkxueSBU.buhMrNtZy_PkZYRURzdn45TTM4Zp2xRS6RVGV4CJMPq52Z7OpiGqlUm2.oPdE5jCS0wrprGDbjtg_4hDOi5uHy9h7_txU' \
+  -H 'acc-lang: zh-HK' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: zh-HK' \
+  -H 'api-version: 2' \
+  -H 'channelid: WWW' \
+  -H 'cmhkchannel: WWW' \
+  -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -b 'JSESSIONID=GA1.1.56908290.1768204479; _ga=GA1.1.56908290.1768204479; __qca=P1-37bb6929-0d7f-42d1-8dc3-aa3c40177a17; _ga_3L8BEE33WB=GS2.1.s1773396484$o2$g0$t1773396484$j60$l0$h0; _gcl_au=1.1.346306711.1782746843; _fbp=fb.1.1782746843462.650640671629310150; lang=zh-HK; _clck=1fjef3a%5E2%5Eg8a%5E0%5E2371; _gcl_gs=2.1.k1$i1786006532$u31404454; JSESSIONID_USER=l868CD0B10423E37A138282160500395B-1; _gcl_aw=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; _gcl_dc=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; tfpsi=1304e250-4285-4b15-95e2-476640180889; _ga_W9GR00K3WL=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; _ga_8W8T13PN7Z=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; zA7uZWGUB1=0WDjksJd6548nJw4e7pq6BpbKCdiy8nRViCg4Q==; 1P_JAR636e=ak1550236260z8MknQfA1ae19f7a.WQQ.zHgDs3IlPZJ4qzN2W3Q.craKQsCMncbS5GuGcu4OAKxu9hEhCEUh0tjnnu22Je8Cwqdj5ewgjbXMO5qyro.g1Ouiw3_87X8lQrwHTwBo6mUE_Cx2oBemYGzq8Zbd5V9s9sIWgan2t1zrjv9Mr.WvAlmm2yMjcJ9GUnrs_1x9Gymgc_FawQRsJTjk8MVAXuVdVzmJzuSxZdt2AgeASG0JZZFhwxNEiXsD_I_61Of_3gMY6N8dBYZR3APZ83jFLqHIA9BpRVINwAciWTirIzJLvoBP7RsXaAlFMWb2ZM' \
+  -H 'omni-client-device-id: OCD0202603132032360919656300544' \
+  -H 'omni-tracking-info: %7B%22clickTime%22%3A%222026-08-06%2019%3A18%3A55%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F150.0.0.0%20Safari%2F537.36%22%2C%22version%22%3A%222.2.0%22%2C%22platform%22%3A%22windows%22%2C%22network%22%3A%224g%22%2C%22regionCode%22%3A%22%22%2C%22osVersion%22%3A%22Windows%20NT%2010.0%22%2C%22phone%22%3A%22%22%2C%22userType%22%3A%22%22%2C%22serviceType%22%3A%22%22%7D' \
+  -H 'origin: https://www.hk.chinamobile.com' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://www.hk.chinamobile.com/tc/home-family/broadband' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
+  --data-raw 'orderStr=%7B%22carrierInfo%22%3A%5B%7B%22addressCode%22%3A%227574190008%22%2C%22carrier%22%3A%22CMHK%22%2C%22priority%22%3A1%7D%2C%7B%22addressCode%22%3A%227574190008%22%2C%22carrier%22%3A%22I-CABLE%22%2C%22priority%22%3A2%7D%2C%7B%22addressCode%22%3A%2262012%22%2C%22carrier%22%3A%22HKBN%22%2C%22priority%22%3A3%7D%5D%2C%22clientType%22%3A%22STANDALONE%22%2C%22ofcaCode%22%3A%2262012%22%2C%22description%22%3A%22%3Cspan%20class%3D%27keyWord%27%3E%E7%AC%AC9%E5%BA%A7%3C%2Fspan%3E%2C%3Cspan%20class%3D%27keyWord%27%3E%E7%BF%A0%E6%93%81%E8%8F%AF%E5%BA%AD%3C%2Fspan%3E%2C%3Cspan%20class%3D%27keyWord%27%3E%E6%B2%99%E5%AE%89%E8%A1%97%3C%2Fspan%3E%2C%3Cspan%20class%3D%27keyWord%27%3E%E9%A6%AC%E9%9E%8D%E5%B1%B1%3C%2Fspan%3E%2C%3Cspan%20class%3D%27keyWord%27%3E%E6%96%B0%E7%95%8C%3C%2Fspan%3E%22%2C%22custCode%22%3A%22%22%2C%22value%22%3A%22%E7%AC%AC9%E5%BA%A7%2C%E7%BF%A0%E6%93%81%E8%8F%AF%E5%BA%AD%2C%E6%B2%99%E5%AE%89%E8%A1%97%2C%E9%A6%AC%E9%9E%8D%E5%B1%B1%2C%E6%96%B0%E7%95%8C%22%7D' 将返回值busiResp保存为busiRespObj，按照规则（每五层记随机选一层 记为curFloor，在当层中随机选一个Flat记为curFlat）当前BuildingCode的Floor所有Flat，构造这个接口的入参，将接口curl 'https://www.hk.chinamobile.com/api/ecosp-emall/itemRest/homeBroadBand/searchAddress?XGiOG2f705=bbl1712814418A526Sfpn0d4a5e18E3RIIAJ_CUZ5n8JfrV.qCZqptSgBDe60oMPAStYAOWqTXWZO_dTei1vqbRMqDmbaPul3E6Q7DCIUR3D7Q_CGjwk_ZfHnzaQakocrXrCGIWHpiNKYIE5yHCT1HZs98aksvJxxXQlEucE1cTMnVZhS8SJjrmzxybcBMRjgZNa4u1BZyjjFEb1RXuPNnhM7k5X2m8270JD6SYNb3ImTL.wb8T3SdHPbYLVpZ7bt5jPnYQD2sKNBMDkmWipErBPTLKm6wB5lDH1aavjQ_Mboag2GbbCw7zkuauuBXC9RG3gUU4g' \
+  -H 'acc-lang: zh-HK' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: zh-HK' \
+  -H 'api-version: 2' \
+  -H 'channelid: WWW' \
+  -H 'cmhkchannel: WWW' \
+  -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -b 'JSESSIONID=GA1.1.56908290.1768204479; _ga=GA1.1.56908290.1768204479; __qca=P1-37bb6929-0d7f-42d1-8dc3-aa3c40177a17; _ga_3L8BEE33WB=GS2.1.s1773396484$o2$g0$t1773396484$j60$l0$h0; _gcl_au=1.1.346306711.1782746843; _fbp=fb.1.1782746843462.650640671629310150; lang=zh-HK; _clck=1fjef3a%5E2%5Eg8a%5E0%5E2371; _gcl_gs=2.1.k1$i1786006532$u31404454; JSESSIONID_USER=l868CD0B10423E37A138282160500395B-1; _gcl_aw=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; _gcl_dc=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; tfpsi=1304e250-4285-4b15-95e2-476640180889; _ga_W9GR00K3WL=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; _ga_8W8T13PN7Z=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; 1P_JAR636e=gq1898666766skDAh6Pp0bdc0220Psb2Zq.FZTpAlWl1VXbkylLORZ_Xqjg8aib9jj4yxWv_huVl9ysJnpzErxukXSuAhRKK5L1M9yJ89BpFeXcOY6DZOe6uBQNT48AEh6onIbNvqSirJmx_tlVEZgh6dRNkUEZaWyMLWTWDPzMlAXiXYl78VDbSEtMbBSUsCf0H8Gq1d5CE8fhDcmmipUmBreix7RDHekl9jLM3kfqGawgOqrGx8yiFkuH.eRujxR1I8ycyWesgZdeseXuAeGwkK3hqo6yWNO1sUXJDFRe7NtMKqMKy6SgPSfdOOEtECbS2r34; zA7uZWGUB1=11C4v01585dIi313pY/qn55EXXdeZ8VU9pZekw==' \
+  -H 'omni-client-device-id: OCD0202603132032360919656300544' \
+  -H 'omni-tracking-info: %7B%22clickTime%22%3A%222026-08-06%2019%3A16%3A16%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F150.0.0.0%20Safari%2F537.36%22%2C%22version%22%3A%222.2.0%22%2C%22platform%22%3A%22windows%22%2C%22network%22%3A%224g%22%2C%22regionCode%22%3A%22%22%2C%22osVersion%22%3A%22Windows%20NT%2010.0%22%2C%22phone%22%3A%22%22%2C%22userType%22%3A%22%22%2C%22serviceType%22%3A%22%22%7D' \
+  -H 'origin: https://www.hk.chinamobile.com' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://www.hk.chinamobile.com/tc/home-family/broadband' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
+  --data-raw 'busInfo=%7B%22keyword%22%3A%22%E7%AC%AC9%E5%BA%A7%2C%E7%BF%A0%E6%93%81%E8%8F%AF%E5%BA%AD%2C%E6%B2%99%E5%AE%89%E8%A1%97%2C%E9%A6%AC%E9%9E%8D%E5%B1%B1%2C%E6%96%B0%E7%95%8C%22%7D' ;
+curl 'https://www.hk.chinamobile.com/api/ecosp-emall/itemRest/homeBroadBand/getAddressDetail?XGiOG2f705=bcm4144366323GS6GX48t019be481C06oVFDwrNX8hLpAN7VuySvetS3Ib0v2b52UUhQnlMPvaH9qRjSz_raGxkxVUGWGziO.NvouFT2zf7M3SOS87.WH8IK1f_fuZwcoEOoF.TMFRbjeosGeBc68HNuEm8v6PtyrwrDrfa2xOhCVFB5YLGBrXcN220IV1Frr5iHDO6uaBGw7AoY3VYIgag.GlIxajHJhhim9mjOznM5Kw.biMvEQM_gqiGADDsUY8BByvZIrbKcq6MOxJ_fC5FLuPX3JeJPFPV_913TDaVak73e_5gbmQ55Vrh.qH6ir_E9PKz0' \
+  -H 'acc-lang: zh-HK' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: zh-HK' \
+  -H 'api-version: 2' \
+  -H 'channelid: WWW' \
+  -H 'cmhkchannel: WWW' \
+  -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -b 'JSESSIONID=GA1.1.56908290.1768204479; _ga=GA1.1.56908290.1768204479; __qca=P1-37bb6929-0d7f-42d1-8dc3-aa3c40177a17; _ga_3L8BEE33WB=GS2.1.s1773396484$o2$g0$t1773396484$j60$l0$h0; _gcl_au=1.1.346306711.1782746843; _fbp=fb.1.1782746843462.650640671629310150; lang=zh-HK; _clck=1fjef3a%5E2%5Eg8a%5E0%5E2371; _gcl_gs=2.1.k1$i1786006532$u31404454; JSESSIONID_USER=l868CD0B10423E37A138282160500395B-1; _gcl_aw=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; _gcl_dc=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; tfpsi=1304e250-4285-4b15-95e2-476640180889; _ga_W9GR00K3WL=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; _ga_8W8T13PN7Z=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; zA7uZWGUB1=Q8AL9ar6RzIX84I15yISJkePze5nqYYQ+CyIfQ==; 1P_JAR636e=eo2795562181AQWKSYYC0566ed4al_XJkRv4B97d9i9ajw7xSdR0DHtawHWWu1utz6K.deDz7eqMMvAzz4Q2SX5TM2pOkSyHgqQ6TJlAhnaPy5sU9Ya7GmEI1aq0H_fZ60C_E0..yP2l7TH..Lg_gQeeNbJK7WcmqYgfJ6jgYSlrB9dO3JfO10qSDb1ehrBMRfkEwZmWSjuCD1fgACOWfN5Yhc9FnrQjKi2Fy_lb1E_nBWqJQyt82kHOHJaQAxd.EL2.R9H_HESqz6uvD2XSGtFaqdaUK9P5C0rTmQVep21aGLHdVbj.02os4Q5LIEZ3a_aG.xo' \
+  -H 'omni-client-device-id: OCD0202603132032360919656300544' \
+  -H 'omni-tracking-info: %7B%22clickTime%22%3A%222026-08-06%2019%3A16%3A18%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F150.0.0.0%20Safari%2F537.36%22%2C%22version%22%3A%222.2.0%22%2C%22platform%22%3A%22windows%22%2C%22network%22%3A%224g%22%2C%22regionCode%22%3A%22%22%2C%22osVersion%22%3A%22Windows%20NT%2010.0%22%2C%22phone%22%3A%22%22%2C%22userType%22%3A%22%22%2C%22serviceType%22%3A%22%22%7D' \
+  -H 'origin: https://www.hk.chinamobile.com' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://www.hk.chinamobile.com/tc/home-family/broadband' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
+  --data-raw 'orderStr=%7B%22carrierInfo%22%3A%5B%7B%22addressCode%22%3A%227574190008%22%2C%22carrier%22%3A%22CMHK%22%2C%22priority%22%3A1%7D%2C%7B%22addressCode%22%3A%227574190008%22%2C%22carrier%22%3A%22I-CABLE%22%2C%22priority%22%3A2%7D%2C%7B%22addressCode%22%3A%2262012%22%2C%22carrier%22%3A%22HKBN%22%2C%22priority%22%3A3%7D%5D%2C%22clientType%22%3A%22STANDALONE%22%2C%22ofcaCode%22%3A%2262012%22%2C%22description%22%3A%22%3Cspan%20class%3D%27keyWord%27%3E%E7%AC%AC9%E5%BA%A7%3C%2Fspan%3E%2C%3Cspan%20class%3D%27keyWord%27%3E%E7%BF%A0%E6%93%81%E8%8F%AF%E5%BA%AD%3C%2Fspan%3E%2C%3Cspan%20class%3D%27keyWord%27%3E%E6%B2%99%E5%AE%89%E8%A1%97%3C%2Fspan%3E%2C%3Cspan%20class%3D%27keyWord%27%3E%E9%A6%AC%E9%9E%8D%E5%B1%B1%3C%2Fspan%3E%2C%3Cspan%20class%3D%27keyWord%27%3E%E6%96%B0%E7%95%8C%3C%2Fspan%3E%22%2C%22custCode%22%3A%22%22%2C%22value%22%3A%22%E7%AC%AC9%E5%BA%A7%2C%E7%BF%A0%E6%93%81%E8%8F%AF%E5%BA%AD%2C%E6%B2%99%E5%AE%89%E8%A1%97%2C%E9%A6%AC%E9%9E%8D%E5%B1%B1%2C%E6%96%B0%E7%95%8C%22%7D' ;
+curl 'https://www.hk.chinamobile.com/api/ecosp-emall/itemRest/homeBroadBand/searchAddress?XGiOG2f705=bcl3741846868YtwiCns5886a572S87TMZ0n_P2S1VMOyk02SD2d0y0cVWkRYqPRlO6cl3mPFmTStw9Iu5Ql5lAe_XBF4NaDyuvCAdI1trO3Dm1Z15_FDAUpnEBwwYLPOGwC0GnJn1UfhEIpeO9B5QrLNAcdZC9VoTUndCku0NtgzNTk8g4bHkERw1K4kALm6oQCZnqY7YxsW0jvakYdvGhvOJEGdOxAI3W3fZ0HjT9BwizsK.UbWCRY8KEemYoZM5J3kMKmkgXKD3khgn7O.oM7lygSlCCsfy6XWQMoAayw_f12oKmvt60.qS0kyD3jHHjYbjI' \
+  -H 'acc-lang: zh-HK' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: zh-HK' \
+  -H 'api-version: 2' \
+  -H 'channelid: WWW' \
+  -H 'cmhkchannel: WWW' \
+  -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -b 'JSESSIONID=GA1.1.56908290.1768204479; _ga=GA1.1.56908290.1768204479; __qca=P1-37bb6929-0d7f-42d1-8dc3-aa3c40177a17; _ga_3L8BEE33WB=GS2.1.s1773396484$o2$g0$t1773396484$j60$l0$h0; _gcl_au=1.1.346306711.1782746843; _fbp=fb.1.1782746843462.650640671629310150; lang=zh-HK; _clck=1fjef3a%5E2%5Eg8a%5E0%5E2371; _gcl_gs=2.1.k1$i1786006532$u31404454; JSESSIONID_USER=l868CD0B10423E37A138282160500395B-1; _gcl_aw=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; _gcl_dc=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; tfpsi=1304e250-4285-4b15-95e2-476640180889; _ga_W9GR00K3WL=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; _ga_8W8T13PN7Z=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; 1P_JAR636e=eo2795562181AQWKSYYC0566ed4al_XJkRv4B97d9i9ajw7xSdR0DHtawHWWu1utz6K.deDz7eqMMvAzz4Q2SX5TM2pOkSyHgqQ6TJlAhnaPy5sU9Ya7GmEI1aq0H_fZ60C_E0..yP2l7TH..Lg_gQeeNbJK7WcmqYgfJ6jgYSlrB9dO3JfO10qSDb1ehrBMRfkEwZmWSjuCD1fgACOWfN5Yhc9FnrQjKi2Fy_lb1E_nBWqJQyt82kHOHJaQAxd.EL2.R9H_HESqz6uvD2XSGtFaqdaUK9P5C0rTmQVep21aGLHdVbj.02os4Q5LIEZ3a_aG.xo; zA7uZWGUB1=RRI4dY7fy4K32ntlxNkigMrxfaQrirFSYCBF6A==' \
+  -H 'omni-client-device-id: OCD0202603132032360919656300544' \
+  -H 'omni-tracking-info: %7B%22clickTime%22%3A%222026-08-06%2019%3A18%3A54%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F150.0.0.0%20Safari%2F537.36%22%2C%22version%22%3A%222.2.0%22%2C%22platform%22%3A%22windows%22%2C%22network%22%3A%224g%22%2C%22regionCode%22%3A%22%22%2C%22osVersion%22%3A%22Windows%20NT%2010.0%22%2C%22phone%22%3A%22%22%2C%22userType%22%3A%22%22%2C%22serviceType%22%3A%22%22%7D' \
+  -H 'origin: https://www.hk.chinamobile.com' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://www.hk.chinamobile.com/tc/home-family/broadband' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
+  --data-raw 'busInfo=%7B%22keyword%22%3A%22%E7%AC%AC9%E5%BA%A7%2C%E7%BF%A0%E6%93%81%E8%8F%AF%E5%BA%AD%2C%E6%B2%99%E5%AE%89%E8%A1%97%2C%E9%A6%AC%E9%9E%8D%E5%B1%B1%2C%E6%96%B0%E7%95%8C%22%7D' ;
+curl 'https://www.hk.chinamobile.com/api/ecosp-emall/itemRest/homeBroadBand/getAddressDetail?XGiOG2f705=bdn3964411981mfEe7jJB721579e3r7MRlsL2ureVsxm_LFe.8yNwNBrcSpsBNj_lxIgkfvMj7o0uiPj_RMF_UM4WyQY6O2LLVk.WBugHeHWk.w50orQR7woeV4dxDofPQaosPxAH4t4UOEQI6bfiDYeQhDYa5EI7zxo8UEVGDkxYkt8laSeAaJxnZ7uO7rbW5IGBrchHnCRzfOfxQWFw9iYqGEL1hTvxIOkxueSBU.buhMrNtZy_PkZYRURzdn45TTM4Zp2xRS6RVGV4CJMPq52Z7OpiGqlUm2.oPdE5jCS0wrprGDbjtg_4hDOi5uHy9h7_txU' \
+  -H 'acc-lang: zh-HK' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: zh-HK' \
+  -H 'api-version: 2' \
+  -H 'channelid: WWW' \
+  -H 'cmhkchannel: WWW' \
+  -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -b 'JSESSIONID=GA1.1.56908290.1768204479; _ga=GA1.1.56908290.1768204479; __qca=P1-37bb6929-0d7f-42d1-8dc3-aa3c40177a17; _ga_3L8BEE33WB=GS2.1.s1773396484$o2$g0$t1773396484$j60$l0$h0; _gcl_au=1.1.346306711.1782746843; _fbp=fb.1.1782746843462.650640671629310150; lang=zh-HK; _clck=1fjef3a%5E2%5Eg8a%5E0%5E2371; _gcl_gs=2.1.k1$i1786006532$u31404454; JSESSIONID_USER=l868CD0B10423E37A138282160500395B-1; _gcl_aw=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; _gcl_dc=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; tfpsi=1304e250-4285-4b15-95e2-476640180889; _ga_W9GR00K3WL=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; _ga_8W8T13PN7Z=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; zA7uZWGUB1=0WDjksJd6548nJw4e7pq6BpbKCdiy8nRViCg4Q==; 1P_JAR636e=ak1550236260z8MknQfA1ae19f7a.WQQ.zHgDs3IlPZJ4qzN2W3Q.craKQsCMncbS5GuGcu4OAKxu9hEhCEUh0tjnnu22Je8Cwqdj5ewgjbXMO5qyro.g1Ouiw3_87X8lQrwHTwBo6mUE_Cx2oBemYGzq8Zbd5V9s9sIWgan2t1zrjv9Mr.WvAlmm2yMjcJ9GUnrs_1x9Gymgc_FawQRsJTjk8MVAXuVdVzmJzuSxZdt2AgeASG0JZZFhwxNEiXsD_I_61Of_3gMY6N8dBYZR3APZ83jFLqHIA9BpRVINwAciWTirIzJLvoBP7RsXaAlFMWb2ZM' \
+  -H 'omni-client-device-id: OCD0202603132032360919656300544' \
+  -H 'omni-tracking-info: %7B%22clickTime%22%3A%222026-08-06%2019%3A18%3A55%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F150.0.0.0%20Safari%2F537.36%22%2C%22version%22%3A%222.2.0%22%2C%22platform%22%3A%22windows%22%2C%22network%22%3A%224g%22%2C%22regionCode%22%3A%22%22%2C%22osVersion%22%3A%22Windows%20NT%2010.0%22%2C%22phone%22%3A%22%22%2C%22userType%22%3A%22%22%2C%22serviceType%22%3A%22%22%7D' \
+  -H 'origin: https://www.hk.chinamobile.com' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://www.hk.chinamobile.com/tc/home-family/broadband' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
+  --data-raw 'orderStr=%7B%22carrierInfo%22%3A%5B%7B%22addressCode%22%3A%227574190008%22%2C%22carrier%22%3A%22CMHK%22%2C%22priority%22%3A1%7D%2C%7B%22addressCode%22%3A%227574190008%22%2C%22carrier%22%3A%22I-CABLE%22%2C%22priority%22%3A2%7D%2C%7B%22addressCode%22%3A%2262012%22%2C%22carrier%22%3A%22HKBN%22%2C%22priority%22%3A3%7D%5D%2C%22clientType%22%3A%22STANDALONE%22%2C%22ofcaCode%22%3A%2262012%22%2C%22description%22%3A%22%3Cspan%20class%3D%27keyWord%27%3E%E7%AC%AC9%E5%BA%A7%3C%2Fspan%3E%2C%3Cspan%20class%3D%27keyWord%27%3E%E7%BF%A0%E6%93%81%E8%8F%AF%E5%BA%AD%3C%2Fspan%3E%2C%3Cspan%20class%3D%27keyWord%27%3E%E6%B2%99%E5%AE%89%E8%A1%97%3C%2Fspan%3E%2C%3Cspan%20class%3D%27keyWord%27%3E%E9%A6%AC%E9%9E%8D%E5%B1%B1%3C%2Fspan%3E%2C%3Cspan%20class%3D%27keyWord%27%3E%E6%96%B0%E7%95%8C%3C%2Fspan%3E%22%2C%22custCode%22%3A%22%22%2C%22value%22%3A%22%E7%AC%AC9%E5%BA%A7%2C%E7%BF%A0%E6%93%81%E8%8F%AF%E5%BA%AD%2C%E6%B2%99%E5%AE%89%E8%A1%97%2C%E9%A6%AC%E9%9E%8D%E5%B1%B1%2C%E6%96%B0%E7%95%8C%22%7D' ;
+curl 'https://www.hk.chinamobile.com/api/ecosp-emall/itemRest/homeBroadBand/getInstallInfo?XGiOG2f705=bis3513119456ABsQnzhJ62f6c4c9FOWSnU7DwETKzq1zUpmWpo248xkvNuocSeHmuN3TMg84KnL9BbltPINOJQScpV5R3VH6L0gYPYvCRwywots5xpn33vxd9hRVlaDQImjEJDh6dXmBWG09dZkCCxFVnF9cLQNswCDMw2EJu2rFcZeEC7EBolUY8zaxbm2UqHordiHeWeXGWYV7hUZrxNVZwA1wJubzlB0LPLa6_AgxNs5k486u1lDqcrnMCqoBp9liecGmwD44CHSws_N60Hwx2R6ls.vwkzSbA.bVB6u9Sz4LG_jV.eUPT0c_nw2cwSg7C6c' \
+  -H 'acc-lang: zh-HK' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: zh-HK' \
+  -H 'api-version: 2' \
+  -H 'channelid: WWW' \
+  -H 'cmhkchannel: WWW' \
+  -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -b 'JSESSIONID=GA1.1.56908290.1768204479; _ga=GA1.1.56908290.1768204479; __qca=P1-37bb6929-0d7f-42d1-8dc3-aa3c40177a17; _ga_3L8BEE33WB=GS2.1.s1773396484$o2$g0$t1773396484$j60$l0$h0; _gcl_au=1.1.346306711.1782746843; _fbp=fb.1.1782746843462.650640671629310150; lang=zh-HK; _clck=1fjef3a%5E2%5Eg8a%5E0%5E2371; _gcl_gs=2.1.k1$i1786006532$u31404454; JSESSIONID_USER=l868CD0B10423E37A138282160500395B-1; _gcl_aw=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; _gcl_dc=GCL.1786006540.EAIaIQobChMInfTh5tCLlgMVal0PAh1eih3AEAAYASAAEgIs2PD_BwE; tfpsi=1304e250-4285-4b15-95e2-476640180889; _ga_W9GR00K3WL=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; _ga_8W8T13PN7Z=GS2.1.s1786006534$o25$g1$t1786014110$j58$l0$h0; zA7uZWGUB1=l6AGo34969XxWO8mbhwbtO3r2e6/njVViTQjEw==; 1P_JAR636e=ak2715303106j5DBY2yY1508f085zF4dLdEnuVjvNmQ70cZ5n1PBNw.3EonTcP48tWJDebrBes8sXEQy_zmnYNRcDRxgYSph4YtcurnwyZG9EEfn.EGbn1GlWISfCBgUihJ8JIep6MEIyLXuKe2tghMbeEkElKhvzb4a0O4eF0_Rbg37UGphp.CTXueoNdGMCcVisLMYsxYgjRFHsTXPqHmUCc.lB9UJGQhO28stbk8Dh3q8YwN66boQ7c1QK0WTocY2t.drMY9SAn5uzfDENTIO0sQ6XJIsMiHXMXXfBEWiGtbubjLvS3noayy.gV.D24iG6_Q' \
+  -H 'omni-client-device-id: OCD0202603132032360919656300544' \
+  -H 'omni-tracking-info: %7B%22clickTime%22%3A%222026-08-06%2019%3A28%3A55%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F150.0.0.0%20Safari%2F537.36%22%2C%22version%22%3A%222.2.0%22%2C%22platform%22%3A%22windows%22%2C%22network%22%3A%224g%22%2C%22regionCode%22%3A%22%22%2C%22osVersion%22%3A%22Windows%20NT%2010.0%22%2C%22phone%22%3A%22%22%2C%22userType%22%3A%22%22%2C%22serviceType%22%3A%22%22%7D' \
+  -H 'origin: https://www.hk.chinamobile.com' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://www.hk.chinamobile.com/tc/home-family/broadband' \
+  -H 'sec-ch-ua: "Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
+  --data-raw 'busInfo=%7B%22broadBandType%22%3A%22CMHK%22%2C%22buildingCode%22%3A%227574190008%22%2C%22clientType%22%3A%22STANDALONE%22%2C%22ofcaCode%22%3A%2262012%22%2C%22carrierInfo%22%3A%5B%7B%22addressCode%22%3A%227574190008%22%2C%22carrier%22%3A%22CMHK%22%2C%22priority%22%3A1%7D%2C%7B%22addressCode%22%3A%227574190008%22%2C%22carrier%22%3A%22I-CABLE%22%2C%22priority%22%3A2%7D%2C%7B%22addressCode%22%3A%2262012%22%2C%22carrier%22%3A%22HKBN%22%2C%22priority%22%3A3%7D%5D%2C%22floor%22%3A%2210%22%2C%22flat%22%3A%22E%22%7D' 将最后一个连接用自动化浏览器测试的工具打开，待页面加载完毕之后需要我选择“是否能卖2500M"如果我键盘选择Y，或者鼠标点击"是"的话，将Is2500Support = "Y" , defeatBuilding = "N", remark=""可卖2500M"",如果我键盘选择N，或者鼠标点击"否"的话，将Is2500Support = "N" , defeatBuilding = "Y", remark="不可卖2500M"；如果我键盘选择E，或者鼠标点击"其他"的话，将Is2500Support = "NA" , defeatBuilding = "NA", remark="待排查"。对每行记录进行实时刷新到excel表中（表头包括inputBuilding，curBuilding，curFloor，curFlat,Is2500Support,defeatBuilding,remark）需要能支持程序中断下一次还能从当前位置进行排查。
