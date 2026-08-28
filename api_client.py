@@ -64,9 +64,11 @@ class CmhkApiClient:
         self,
         search_token: Optional[str] = None,
         detail_token: Optional[str] = None,
+        install_token: Optional[str] = None,
     ) -> None:
         self.search_token = search_token or config.XGIOG_TOKEN_SEARCH
         self.detail_token = detail_token or config.XGIOG_TOKEN_DETAIL
+        self.install_token = install_token or config.XGIOG_TOKEN_INSTALL
         # 复用 Session 维持 keep-alive、复用 cookie
         self.session = requests.Session()
         self.session.headers.update(config.DEFAULT_HEADERS)
@@ -105,6 +107,22 @@ class CmhkApiClient:
         payload = dict(address_obj)
         payload.setdefault("clientType", config.CLIENT_TYPE)
         return _post_form(self.session, url, "orderStr", payload)
+
+    # -------------------- getInstallInfo --------------------
+    def get_install_info(self, bus_info: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        调 getInstallInfo，返回完整响应 JSON（含 busiResp 包装层）。
+
+        纯后台 requests 实现，等价于浏览器内 fetch（auto_run_building_list
+        的「脚本测试」版本）。入参 bus_info 由 main.build_install_bus_info
+        构造，至少含 buildingCode / ofcaCode / carrierInfo / floor / flat。
+
+        :raises ApiError: HTTP 错误 / 非 JSON / 业务 resCode 异常。
+        """
+        url = _build_url(config.API_GET_INSTALL_INFO, self.install_token)
+        # 注意：getInstallInfo 的表单字段名是 busInfo（与 getAddressDetail 的
+        # orderStr 不同，与浏览器内 fetch 的 body 字段一致）。
+        return _post_form(self.session, url, "busInfo", bus_info)
 
     # -------------------- 节流 --------------------
     def throttle(self, seconds: Optional[float] = None) -> None:
